@@ -1,0 +1,21 @@
+MyStuff - Questionário para Etapa de "Discovery"
+------------------------------------------------
+
+:: 1. Para você, qual a importância de manter o controle sobre os bens (imóveis, móveis, utensílios, ferramentas, decoração, etc.) que possui?
+    - Nada importante -> Muito Importante
+
+:: 2. Você tem ciência de todos os bens que possui em sua casa?
+    - Sim / Não
+
+:: 3. Você mantem um controle daquilo que possui?
+    - Sim / Não
+    
+:: 4. Se a resposta à pergunta 3 foi sim, como é feito o controle?
+    - Caderno / Bloco de Anotações
+    - Documento eletrônico (Word, Bloco de Notas, etc.)
+    - Planilha eletrônica (Excel, Google Docs, etc.)
+    - Outro
+        :: Qual?
+
+:: 5. Se a resposta à pergunta 3 foi não, você utilizaria uma solução específica para este problema?
+    - Sim / Não

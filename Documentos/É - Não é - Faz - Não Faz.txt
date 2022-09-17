@@ -1,0 +1,33 @@
+MyStuff - Inventário Pessoal
+----------------------------
+
+:: É
+
+- App nativo Android
+- Controle de Inventário Pessoal
+
+:: Não é
+
+- Controle Financeiro
+- Loja (eCommerce)
+
+:: Faz
+
+- Controle (cadastros) de Imóveis, Cômodos e Itens (com quantidades)
+- Associação de Itens e Cômodos
+- Pesquisa
+- Exportação de Relatórios (com base na pesquisa):
+    - Imóvel(is)
+    - Cômodo(s)
+    - Item(s)
+- Sincronização com Nuvem
+- Login social
+- Leitura de Código de Barras ou QR Code
+- Leitura de item com Google Lens (possível?)
+- Controle de Mudança
+- Etiquetas
+
+:: Não Faz
+
+- Controle de Estoque/Movimentação
+- Controle de Consumíveis (Alimentos, Remédios, Limpeza...)

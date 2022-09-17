@@ -1,0 +1,5 @@
+Rascunho do TCC
+
+- MyStuff
+
+Controle de inventário pessoal. Cadastrar imóveis, cômodos, itens e quantidades. Distribuir itens nos cômodos. Extrair relatórios para comparação.

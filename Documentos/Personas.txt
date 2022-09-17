@@ -1,0 +1,110 @@
+MyStuff - Personas
+------------------
+
+:: Público-Alvo:
+    
+    Pessoas (em sua maioria, adultos) que necessitem de controle e organização em relação aos seus bens pessoais.
+    Exemplos:
+        - Pessoas em processo de mudança;
+        - Pessoas que possuem mais de um imóvel;
+        - Pais que querem monitorar os bens dos filhos;
+        - Locatários de imóveis mobiliados (aluguel, AirBnB, etc.)
+        - Outros casos específicos
+
+
+:: Personas
+
+#Perfil
+
+         Nome: Pedro
+        Idade: 50
+       Genero: Masculino
+    Profissão: Servidor Público
+      Salário: ~R$4000
+Classe Social: B
+ Estado Civil: Casado
+
+#Comportamento
+
+       Personalidade: Organizado, Honesto
+ Nivel de intimidade
+com tecnologia movel: Bom
+             Hobbies: Atitividades ao ar livre com a esposa, Colecionar miniaturas de automóveis
+              Gostos: Carros, Rock
+
+#Necessidade
+
+Catalogar suas miniaturas e álbuns (CDs e discos de vinil)
+
+
+
+#Perfil
+
+         Nome: Rose
+        Idade: 30
+       Genero: Feminino
+    Profissão: Esteticista
+      Salário: ~R$2000
+Classe Social: B
+ Estado Civil: Solteira
+
+#Comportamento
+
+       Personalidade: Carismática
+ Nivel de intimidade
+com tecnologia movel: Bom - Utiliza alguns serviços móveis já estabelecidos (Uber, iFood, etc.)
+             Hobbies: Sair com as amigas
+              Gostos: Música eletrônica, filmes antigos
+
+#Necessidade
+
+Pretende comprar um apartamento em breve e gostaria de garantir que não perderá nada na mudança.
+
+
+
+#Perfil
+
+         Nome: João
+        Idade: 60
+       Genero: Masculino
+    Profissão: Empresário do setor de alimentação
+      Salário: ~R$10000
+Classe Social: A
+ Estado Civil: Divorciado
+
+#Comportamento
+
+       Personalidade: Meticuloso
+ Nivel de intimidade
+com tecnologia movel: Alto - Jogos mais complexos e aplicativos de fotografia
+             Hobbies: Leitura e viagens
+              Gostos: Fotografia
+
+#Necessidade
+
+Quer manter controle dos bens em seu apartamento na praia.
+
+
+
+:: Jornadas
+
+Pedro
+
+    - Acorda pela manhã e, depois do café, organiza o que vai levar para o dia de trabalho.
+    - Durante o caminho, ouve música em seu celular
+    - No intervalo sai para almoçar em um shopping próximo ao local de trabalho.
+    - No shopping, visita uma loja de variedades ("tabacaria") que frequentemente recebe miniaturas de automóveis em escala. Adquire uma.
+    - Chegando em casa, faz uma análise na miniatura, buscando avarias.
+    - Confirmado o bom estado da aquisição, abre o MyStuff em seu celular e inclui a miniatura na coleção.
+    - Após, faz o jantar com sua esposa e toma um banho para se preparar para dormir.
+
+Rose
+
+    - Acorda cedo e se arruma para abrir o Salão de Beleza. Não toma café da manhã.
+    - Durante o dia, confere o celular para verificar mensagens de clientes e posts sobre beleza no Instagram.
+    - Após sua jornada de trablho, continua catalogando seus itens de casa enquanto procura por apartamentos à venda em sites como o Quinto Andar.
+
+João
+
+    - De férias do trabalho, foi passar uma temporada em seu apartamento na praia.
+    - Durante a estadia, registra no aplicativo qualquer item novo que adquira para deixar ali (móveis, utensílios, decorações, etc.

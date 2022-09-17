@@ -1,0 +1,54 @@
+MyStuff - Funcionalidades
+-------------------------
+
+:: Login
+
+    - Cadastro de usuário e senha
+    - Login e logout
+
+:: Gerenciamentos (CRUD)
+
+    - Imóveis
+    - Locais (Cômodos, caixas, etc.)
+    - Itens
+        - Quantidades
+
+:: Pesquisa
+    
+    - Exportação dos resultados em forma de relatório
+        * A partir das visualizações padrão ou pesquisa Textual
+        - PDF
+        - CSV
+        - Excel
+        - Outros
+    
+:: Login Social
+
+    - Utilização das contas sociais mais comuns ou usuário e senha
+
+:: Sincronização com a Nuvem
+
+    - Provido pelo login social ou à escolha do usuário
+
+:: Leitura de Códigos de Barra / QR Code
+
+    * Pode não ser possível implementar
+
+:: Identificação do item através do Google Lens
+
+    - Usar a câmera para "ver" um item e trazer o nome para o MyStuff
+        * Pode não ser possível implementar
+
+:: Controle de Mudança
+
+    - Definir início do processo de Mudança
+        - Exportar situação geral atual do inventário
+        - Mover itens para "caixas temporárias" ("check-in")
+        - Ao final, conforme se retira os itens das caixas, fazer o "check-out" no aplicativo.
+        - Comparar com a situação antes da mudança e destacar discrepâncias.
+    - Módulo (aplicativo separado?) para fretistas/empresas de mudança, no qual o usuário compartilha o inventário para a mudança.
+
+:: Etiquetas
+
+    - Gerar etiquetas com base em parâmetros definidos pelo usuário
+    - Gerar etiquetas com QR Codes para facilitar o processo de mudança.

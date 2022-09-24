@@ -12,6 +12,7 @@ MyStuff - Funcionalidades
     - Locais (Cômodos, caixas, etc.)
     - Itens
         - Quantidades
+    - Categorias de Itens
 
 :: Pesquisa
     

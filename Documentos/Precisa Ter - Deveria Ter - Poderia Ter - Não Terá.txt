@@ -1,0 +1,20 @@
+MyStuff - MoSCoW (Must or Should / Could or Won't)
+--------------------------------------------------
+
+Precisa Ter
+    - Gerenciamentos (CRUD - Imóvel, Local, Item, Categoria)
+
+Deveria Ter
+    - Login
+    - Exportação (PDF, Excel, etc.)
+
+Poderia Ter
+    - QR Code
+    - Google Lens
+    - Login Social
+    - Sincronização com a Nuvem
+    - Controle de Valores
+    - Controle de Mudança
+
+Não Terá
+    - Etiquetas (?)

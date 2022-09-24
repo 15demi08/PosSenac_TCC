@@ -1,0 +1,21 @@
+MyStuff - Jornadas vs. Funcionalidades
+--------------------------------------
+
+Jornadas de Pedro
+
+Incluir miniatura na coleção
+1. Acordar e se organizar para o trabalho depois do café da manhã
+2. Ir para o trabalho ouvindo música no celular
+3. Sair para almoçar no shopping perto do trabalho
+4. Adquirir uma miniatura de automóvel na tabacaria
+5. Já em casa, inspecionar a miniatura
+6. Adicionar no MyStuff
+    - Item: Lamborghini Diablo
+    - Quantidade: 1
+    - Local: Escritório - Estante Principal
+7. Jantar e dormir
+
+Inspecionar coleção de miniaturas
+1. Verificar a coleção de miniaturas em seu escritório
+2. Abrir o MyStuff e filtrar lista de itens pelo local Escritório - Estante Principal
+3. Conferir manualmente a presença de todas as miniaturas no aplicativo

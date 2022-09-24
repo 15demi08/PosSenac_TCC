@@ -1,0 +1,17 @@
+MyStuff - Visão do Produto
+--------------------------
+
+Para
+    Pessoas que possuem qualquer tipo de bem (imóvel, móvel, etc.), em sua maioria, adultos
+Que
+    precisam controlar e organizar os seus itens
+O
+    MyStuff
+É um
+    Aplicativo gratuito de inventário, nativo para sistema Android
+Que
+    Possibilita a inclusão e o controle das posses do usuário, bem como suas quantidades e o local de armazenamento.
+Diferentemente do
+    -
+O nosso produto
+    -

@@ -3,28 +3,28 @@ package com.demetriusjr.mystuff.db
 import androidx.room.*
 
 @Entity
-data class Local(
-    @PrimaryKey val id:Int,
+data class Local (
+    @PrimaryKey(autoGenerate = true) val idLocal:Long,
     val nome:String?,
-    val idInventario:Int
+    val idInventario:Long
 )
 
 @Dao
 interface LocalDAO {
 
     @Insert
-    fun inserir(vararg local:Local)
+    suspend fun inserir(vararg local:Local)
 
     @Update
-    fun atualizar(local:Local)
+    suspend fun atualizar(local:Local)
 
     @Delete
-    fun excluir(local:Local)
+    suspend fun excluir(local:Local)
 
-    @Query("SELECT * FROM local")
-    fun consultarTodos():List<Local>
+    @Query("SELECT * FROM local WHERE idLocal = :idLocal")
+    suspend fun consultar(idLocal:Long):Local
 
-    @Query("SELECT * FROM local WHERE idInventario = :idInventario")
-    fun consultarPorInventario(idInventario:Int):List<Local>
+    @Query("SELECT * FROM local JOIN inventario USING(idInventario)")
+    suspend fun consultar():List<Local>
 
 }

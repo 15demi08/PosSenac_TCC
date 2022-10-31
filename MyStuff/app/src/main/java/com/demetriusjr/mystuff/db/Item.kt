@@ -3,10 +3,10 @@ package com.demetriusjr.mystuff.db
 import androidx.room.*
 
 @Entity
-data class Item(
-    @PrimaryKey val id:Int,
+data class Item (
+    @PrimaryKey(autoGenerate = true) val idItem:Long,
     val nome:String?,
-    val quantidade:Int,
+    val quantidade:Long,
     val idLocal:Local
 )
 
@@ -14,18 +14,19 @@ data class Item(
 interface ItemDAO {
 
     @Insert
-    fun inserir(vararg itens:Item)
+    suspend fun inserir(vararg itens:Item)
 
     @Update
-    fun atualizar(item:Item)
+    suspend fun atualizar(item:Item)
 
     @Delete
-    fun excluir(item:Item)
+    suspend fun excluir(item:Item)
 
-    @Query("SELECT * FROM item")
-    fun consultarTodos():List<Item>
+    @Query("SELECT * FROM item JOIN local USING(idLocal) WHERE idLocal = :idLocal")
+    suspend fun consultarPorLocal(idLocal:Long):List<Item>
 
-    @Query("SELECT * FROM item WHERE idLocal = :idLocal")
-    fun consultarPorLocal(idLocal:Int):List<Item>
+    @Transaction
+    @Query("SELECT * FROM item WHERE idItem = :idItem")
+    suspend fun consultarComCategorias(idItem:Long):ItemComCategorias
 
 }

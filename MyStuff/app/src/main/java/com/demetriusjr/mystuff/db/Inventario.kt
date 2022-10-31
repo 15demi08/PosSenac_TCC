@@ -3,24 +3,27 @@ package com.demetriusjr.mystuff.db
 import androidx.room.*
 
 @Entity
-data class Inventario(
-    @PrimaryKey val id: Int,
-    val nome: String?
+data class Inventario (
+    @PrimaryKey(autoGenerate = true) val idInventario:Long,
+    val nome:String?
 )
 
 @Dao
 interface InventarioDAO {
 
     @Insert
-    fun inserir(vararg inventarios: Inventario)
+    suspend fun inserir(vararg inventarios:Inventario)
 
     @Update
-    fun atualizar(inventario: Inventario)
+    suspend fun atualizar(inventario:Inventario)
 
     @Delete
-    fun excluir(inventario: Inventario)
+    suspend fun excluir(inventario:Inventario)
 
     @Query("SELECT * FROM inventario")
-    fun consultarTodos(): List<Inventario>
+    suspend fun consultar():List<Inventario>
+
+    @Query("SELECT * FROM inventario WHERE idInventario = :idInventario")
+    suspend fun consultar(idInventario:Long):Inventario
 
 }

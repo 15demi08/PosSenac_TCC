@@ -3,8 +3,8 @@ package com.demetriusjr.mystuff.db
 import androidx.room.*
 
 @Entity
-data class Categoria (
-    @PrimaryKey val id:Int,
+data class Categoria(
+    @PrimaryKey(autoGenerate = true) val idCategoria:Long,
     val nome:String?
 )
 
@@ -12,15 +12,22 @@ data class Categoria (
 interface CategoriaDAO {
 
     @Insert
-    fun inserir( vararg categorias: Categoria )
+    suspend fun inserir(vararg categorias:Categoria)
 
     @Update
-    fun atualizar(categoria: Categoria)
+    suspend fun atualizar(categoria:Categoria)
 
     @Delete
-    fun excluir(categoria: Categoria)
+    suspend fun excluir(categoria:Categoria)
 
     @Query("SELECT * FROM categoria")
-    fun consultarTodos(): List<Categoria>
+    suspend fun consultar():List<Categoria>
+
+    @Query("SELECT * FROM categoria WHERE idCategoria = :idCategoria")
+    suspend fun consultar(idCategoria:Long):Categoria
+
+    @Transaction
+    @Query("SELECT * FROM categoria WHERE idCategoria= :idCategoria")
+    suspend fun consultarComItens(idCategoria:Long):CategoriaComItens
 
 }

@@ -2,7 +2,7 @@ package com.demetriusjr.mystuff
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.demetriusjr.mystuff.ui.main.MainFragment
+import com.demetriusjr.mystuff.fragmentos.FragmentoInventarios
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
+                .replace(R.id.container, FragmentoInventarios.newInstance())
                 .commitNow()
         }
     }

@@ -2,16 +2,16 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navegacao_principal"
-    app:startDestination="@id/mainFragment">
+    android:id="@+id/navegacao"
+    app:startDestination="@id/fragmentoInventarios">
 
     <fragment
-        android:id="@+id/mainFragment"
+        android:id="@+id/fragmentoInventarios"
         android:name="com.demetriusjr.mystuff.fragmentos.FragmentoInventarios"
-        android:label="fragment_main"
+        android:label="fragmento_inventarios"
         tools:layout="@layout/fragmento_inventarios" >
         <action
-            android:id="@+id/action_mainFragment_to_fragmentoInventarioDetalhes"
+            android:id="@+id/action_fragmentoInventarios_to_fragmentoInventarioDetalhes"
             app:destination="@id/fragmentoInventarioDetalhes"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
@@ -21,6 +21,5 @@
     <fragment
         android:id="@+id/fragmentoInventarioDetalhes"
         android:name="com.demetriusjr.mystuff.fragmentos.FragmentoInventarioDetalhes"
-        android:label="FragmentoInventarioDetalhes"
-        tools:layout="@layout/fragmento_inventario_detalhes" />
+        android:label="FragmentoInventarioDetalhes" />
 </navigation>

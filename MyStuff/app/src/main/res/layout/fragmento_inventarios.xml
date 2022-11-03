@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/marromBase"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -32,7 +33,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rclvListaLocais"
+        android:id="@+id/rclvListaInventarios"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -56,5 +57,34 @@
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txtvNenhumInventario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-24dp"
+        android:layout_marginEnd="8dp"
+        android:text="Nenhum Inventario!\nClique aqui para criar um."
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/marromBase"
+        app:layout_constraintBottom_toBottomOf="@+id/seta"
+        app:layout_constraintEnd_toStartOf="@+id/seta"
+        app:layout_constraintTop_toTopOf="@+id/seta" />
+
+    <ImageView
+        android:id="@+id/seta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-4dp"
+        android:layout_marginBottom="8dp"
+        android:rotation="90"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:src="@drawable/ic_round_shortcut_24"
+        android:tint="@color/marromBase"
+        app:layout_constraintBottom_toTopOf="@+id/novoInventario"
+        app:layout_constraintEnd_toEndOf="@+id/novoInventario"
+        app:layout_constraintStart_toStartOf="@+id/novoInventario" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

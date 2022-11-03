@@ -1,6 +1,7 @@
 package com.demetriusjr.mystuff.db
 
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Entity
 data class Inventario (
@@ -21,9 +22,6 @@ interface InventarioDAO {
     suspend fun excluir(inventario:Inventario)
 
     @Query("SELECT * FROM inventario")
-    suspend fun consultar():List<Inventario>
-
-    @Query("SELECT * FROM inventario WHERE idInventario = :idInventario")
-    suspend fun consultar(idInventario:Long):Inventario
+    fun consultar():Flow<List<Inventario>>
 
 }

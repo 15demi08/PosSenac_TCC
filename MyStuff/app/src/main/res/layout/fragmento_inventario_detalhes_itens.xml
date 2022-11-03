@@ -7,7 +7,7 @@
     tools:context=".fragmentos.FragmentoInventarioDetalhesLocais">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rclvListaLocais"
+        android:id="@+id/rclvListaInventarios"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="24dp"

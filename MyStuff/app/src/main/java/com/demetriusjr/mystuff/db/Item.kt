@@ -7,7 +7,7 @@ data class Item (
     @PrimaryKey(autoGenerate = true) val idItem:Long,
     val nome:String?,
     val quantidade:Long,
-    val idLocal:Local
+    val idLocal:Long
 )
 
 @Dao

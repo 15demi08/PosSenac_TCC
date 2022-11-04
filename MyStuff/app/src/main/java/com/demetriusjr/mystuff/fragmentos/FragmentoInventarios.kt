@@ -28,21 +28,12 @@ class FragmentoInventarios : Fragment() {
     private lateinit var _b:FragmentoInventariosBinding
     private val b get() = _b
 
-    private lateinit var app:MyStuffApplication// = (requireActivity().application as MyStuffApplication)
-
-    // override fun onActivityCreated(savedInstanceState:Bundle?) {
-    //     super.onActivityCreated(savedInstanceState)
-    // }
+    private lateinit var app:MyStuffApplication
+    private val viewModel:MyStuffViewModel by navGraphViewModels(R.id.navegacao){ MyStuffViewModelFactory(app.repositorio) }
 
     override fun onAttach(context:Context) {
         super.onAttach(context)
-
         app = activity?.application as MyStuffApplication
-
-    }
-
-    private val viewModel:MyStuffViewModel by navGraphViewModels(R.id.navegacao){
-        MyStuffViewModelFactory(app.repositorio)
     }
 
     override fun onCreateView(

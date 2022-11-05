@@ -12,7 +12,7 @@ class MyStuffViewModel(
     // Inventário
     var inventarioSelecionado:Inventario? = null
     val inventarios:LiveData<List<Inventario>> = repositorio.inventarios.asLiveData()
-    fun insert(inventario:Inventario) = viewModelScope.launch { repositorio.inserir(inventario) }
+    fun inserir(inventario:Inventario) = viewModelScope.launch { repositorio.inserir(inventario) }
     fun atualizar(inventario:Inventario) = viewModelScope.launch { repositorio.atualizar(inventario) }
     fun excluir(inventario:Inventario) = viewModelScope.launch { repositorio.excluir(inventario) }
 

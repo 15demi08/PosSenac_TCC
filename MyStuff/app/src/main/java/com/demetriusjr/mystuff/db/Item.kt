@@ -22,7 +22,7 @@ interface ItemDAO {
     @Delete
     suspend fun excluir(item:Item)
 
-    @Query("SELECT * FROM item JOIN local USING(idLocal) WHERE idLocal = :idLocal")
+    @Query("SELECT * FROM item WHERE idLocal = :idLocal")
     suspend fun consultarPorLocal(idLocal:Long):List<Item>
 
     @Transaction

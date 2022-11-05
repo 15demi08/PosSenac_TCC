@@ -19,6 +19,7 @@ import com.demetriusjr.mystuff.MyStuffApplication
 import com.demetriusjr.mystuff.R
 import com.demetriusjr.mystuff.databinding.FragmentoInventariosBinding
 import com.demetriusjr.mystuff.db.Inventario
+import com.demetriusjr.mystuff.fragmentos.dialogos.DialogoNovoInventario
 import com.demetriusjr.mystuff.fragmentos.utilidades.InventariosAdapter
 import com.demetriusjr.mystuff.viewModels.MyStuffViewModel
 import com.demetriusjr.mystuff.viewModels.MyStuffViewModelFactory
@@ -55,14 +56,20 @@ class FragmentoInventarios : Fragment() {
             }
         }
 
-        viewModel.inventarios.observe(viewLifecycleOwner, Observer {
-            (b.rclvListaInventarios.adapter as InventariosAdapter).submitList(it)
+        viewModel.inventarios.observe(viewLifecycleOwner, Observer { lista ->
+
+            (if(lista.isEmpty()) View.VISIBLE else View.GONE).let { visibilidade ->
+                b.seta.visibility = visibilidade
+                b.txtvNenhumInventario.visibility = visibilidade
+            }
+            (b.rclvListaInventarios.adapter as InventariosAdapter).submitList(lista)
+
         })
 
     }
 
     fun novoInventario(){
-        findNavController().navigate(R.id.action_fragmentoInventarios_to_fragmentoInventarioDetalhes)
+        DialogoNovoInventario(viewModel).show(parentFragmentManager, "novoInventario")
     }
 
     companion object {

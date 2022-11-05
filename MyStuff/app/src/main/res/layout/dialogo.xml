@@ -12,6 +12,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
+        android:hint="Nome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -19,7 +20,105 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txteNome"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nome" />
+            android:layout_height="match_parent"
+            android:inputType="textShortMessage|textMultiLine"
+            android:maxLines="1" />
+
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/CamposContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtiNome">
+
+        <ImageButton
+            android:id="@+id/btnDiminuirQuantidade"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="@color/marromBase"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtiQuantidade"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtiQuantidade"
+            app:srcCompat="@drawable/ic_round_remove_24"
+            app:tint="@color/branco" />
+
+        <ImageButton
+            android:id="@+id/btnAumentarQuantidade"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="@color/marromBase"
+            android:padding="8dp"
+            android:tint="@color/branco"
+            app:layout_constraintBottom_toBottomOf="@+id/txtiQuantidade"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtiQuantidade"
+            app:srcCompat="@drawable/ic_round_add_24" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtiQuantidade"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Quantidade"
+            app:layout_constraintEnd_toStartOf="@+id/btnAumentarQuantidade"
+            app:layout_constraintStart_toEndOf="@+id/btnDiminuirQuantidade"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txteQuantidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtiLocal"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:hint="Local"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtiQuantidade">
+
+            <AutoCompleteTextView
+                android:id="@+id/actvLocal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="none"
+                android:padding="16dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtiCategoria"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:hint="Categoria"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtiLocal">
+
+            <AutoCompleteTextView
+                android:id="@+id/actvCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

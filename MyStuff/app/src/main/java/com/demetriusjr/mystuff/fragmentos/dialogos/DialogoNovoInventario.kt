@@ -1,13 +1,19 @@
 package com.demetriusjr.mystuff.fragmentos.dialogos
 
 import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
+import com.demetriusjr.mystuff.R
+import com.demetriusjr.mystuff.databinding.DialogoBinding
+import com.demetriusjr.mystuff.db.Inventario
+import com.demetriusjr.mystuff.viewModels.MyStuffViewModel
 
-class DialogoNovoInventario:DialogFragment() {
+class DialogoNovoInventario(val viewModel:MyStuffViewModel):DialogFragment() {
 
     /**
      * Called to have the fragment instantiate its user interface view.
@@ -42,4 +48,27 @@ class DialogoNovoInventario:DialogFragment() {
     ):View? {
         return super.onCreateView(inflater, container, savedInstanceState)
     }
+
+    override fun onCreateDialog(savedInstanceState:Bundle?):Dialog {
+
+        return activity?.let {
+
+            val v = DialogoBinding.inflate(it.layoutInflater).also {
+                it.CamposContainer.visibility = View.GONE
+            }
+
+            AlertDialog.Builder(it)
+                .setView(v.root)
+                .setPositiveButton(R.string.btn_salvar, DialogInterface.OnClickListener { _, _ ->
+                    viewModel.inserir(Inventario(0, v.txteNome.text.toString()))
+                })
+                .setNeutralButton(R.string.btn_cancelar, null)
+                .create()
+
+        } ?: throw IllegalStateException("'activity' não pode ser nula!")
+
+
+
+    }
+
 }

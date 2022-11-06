@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="preto">#FF000000</color>
-    <color name="branco">#FFFFFFFF</color>
-    <color name="branco70">#B3FFFFFF</color>
-    <color name="marromBase">#FFB8977E</color>
-    <color name="marromEscuro">#FF7F6958</color>
+    <color name="primaryColor">#b8977e</color>
+    <color name="primaryLightColor">#ebc8ad</color>
+    <color name="primaryDarkColor">#876952</color>
+    <color name="secondaryColor">#855f42</color>
+    <color name="secondaryLightColor">#b68c6d</color>
+    <color name="secondaryDarkColor">#56351a</color>
+    <color name="primaryTextColor">#212121</color>
+    <color name="secondaryTextColor">#ffffff</color>
     <color name="cinzaClaro">#FFC0CCDA</color>
     <color name="cinzaEscuro">#FF969FAA</color>
     <color name="cinzaEscuroAzulado">#FF8190A5</color>
     <color name="verdePrimario">#FF77D353</color>
     <color name="vermelhoPrimario">#FFF95F62</color>
+    <color name="branco70">#B3FFFFFF</color>
+    <color name="preto50">#80000000</color>
 </resources>

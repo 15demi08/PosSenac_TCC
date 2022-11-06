@@ -41,21 +41,21 @@
             android:id="@+id/btnDiminuirQuantidade"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:background="@color/marromBase"
+            android:background="@color/primaryColor"
             android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/txtiQuantidade"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/txtiQuantidade"
             app:srcCompat="@drawable/ic_round_remove_24"
-            app:tint="@color/branco" />
+            app:tint="@color/secondaryTextColor" />
 
         <ImageButton
             android:id="@+id/btnAumentarQuantidade"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:background="@color/marromBase"
+            android:background="@color/primaryColor"
             android:padding="8dp"
-            android:tint="@color/branco"
+            android:tint="@color/secondaryTextColor"
             app:layout_constraintBottom_toBottomOf="@+id/txtiQuantidade"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/txtiQuantidade"

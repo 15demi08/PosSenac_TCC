@@ -59,10 +59,10 @@ class DialogoNovoInventario(val viewModel:MyStuffViewModel):DialogFragment() {
 
             AlertDialog.Builder(it)
                 .setView(v.root)
-                .setPositiveButton(R.string.btn_salvar, DialogInterface.OnClickListener { _, _ ->
+                .setPositiveButton(R.string.btnSalvar, DialogInterface.OnClickListener { _, _ ->
                     viewModel.inserir(Inventario(0, v.txteNome.text.toString()))
                 })
-                .setNeutralButton(R.string.btn_cancelar, null)
+                .setNeutralButton(R.string.btnCancelar, null)
                 .create()
 
         } ?: throw IllegalStateException("'activity' não pode ser nula!")

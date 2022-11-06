@@ -2,8 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemContainer"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground">
 
     <TextView
         android:id="@+id/txtvEtiquetaPrimaria"
@@ -13,7 +15,7 @@
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Local" />
+        tools:text="Nome do Item" />
 
     <TextView
         android:id="@+id/txtvEtiquetaFixa"
@@ -51,15 +53,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtvEtiquetaFixa" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <ImageButton
+        android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
+        android:background="?attr/selectableItemBackground"
+        android:contentDescription="@string/inventarioDetalhesOpcoes"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_round_chevron_right_24"
-        app:tint="@color/cinzaEscuro" />
+        app:srcCompat="@drawable/ic_round_more_vert_24"
+        app:tint="@color/preto50" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

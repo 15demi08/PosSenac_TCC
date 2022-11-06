@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">MyStuff</string>
-    <string name="btn_salvar">Salvar</string>
-    <string name="btn_cancelar">Cancelar</string>
-    <string name="btn_excluir">Excluir</string>
+    <string name="btnSalvar">Salvar</string>
+    <string name="btnCancelar">Cancelar</string>
+    <string name="btnExcluir">Excluir</string>
+    <string name="inventariosTitulo">Seus Inventários</string>
+    <string name="inventariosMsgNenhumInventario">Nenhum Inventário!\nClique aqui para criar um.</string>
+    <string name="inventariosFAB">Criar um Inventário</string>
+    <string name="inventarioDetalhesTituloAppBar">Detalhes do Inventário</string>
+    <string name="inventarioDetalhesTabLocais">Locais</string>
+    <string name="inventarioDetalhesTabCategorias">Categorias</string>
+    <string name="inventarioDetalhesTabItens">Itens</string>
+    <string name="inventarioDetalhesOpcoes">Opções do Item</string>
 </resources>

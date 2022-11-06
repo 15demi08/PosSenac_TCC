@@ -35,11 +35,22 @@ class FragmentoInventarioDetalhes:Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         paginasAdapter = InventarioDetalhesPaginasAdapter(this, viewModel )
-        b.paginasInventarioDetalhes.adapter = paginasAdapter
-        val tabsEtiquetas = arrayOf("Locais", "Categorias", "Itens")
-        TabLayoutMediator(b.tabsInventarioDetalhes, b.paginasInventarioDetalhes){ tab, position ->
-            tab.text = tabsEtiquetas[position]
-        }.attach()
+
+        val tabsEtiquetas = arrayOf(
+            getText(R.string.inventarioDetalhesTabLocais),
+            getText(R.string.inventarioDetalhesTabCategorias),
+            getText(R.string.inventarioDetalhesTabItens)
+        )
+
+        b.apply {
+
+            txtvTitulo.text = viewModel.inventarioSelecionado!!.nome
+            paginasInventarioDetalhes.adapter = paginasAdapter
+            TabLayoutMediator(tabsInventarioDetalhes, paginasInventarioDetalhes){ tab, position ->
+                tab.text = tabsEtiquetas[position]
+            }.attach()
+
+        }
 
     }
 

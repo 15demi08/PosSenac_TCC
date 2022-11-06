@@ -9,20 +9,20 @@
         android:id="@+id/containerTitulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/marromBase"
+        android:background="?attr/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/txtvTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/branco"
+            android:textColor="?attr/colorOnPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -36,26 +36,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/containerTitulo"
-        app:tabBackground="@color/marromBase"
-        app:tabSelectedTextColor="@color/branco"
-        app:tabTextColor="@color/branco70">
+        app:tabBackground="@color/primaryLightColor"
+        app:tabSelectedTextColor="?attr/colorOnPrimary"
+        app:tabTextColor="@color/preto50">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Locais"
+            android:background="?attr/selectableItemBackground"
             tools:layout_editor_absoluteX="-3dp"
             tools:layout_editor_absoluteY="62dp" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Categorias" />
+            android:background="?attr/selectableItemBackground" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Itens" />
+            android:background="?attr/selectableItemBackground" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyStuff</string>
+    <string name="btnSalvar">Save</string>
+    <string name="btnCancelar">Cancel</string>
+    <string name="btnExcluir">Delete</string>
+    <string name="inventariosTitulo">Your Inventories</string>
+    <string name="inventariosMsgNenhumInventario">No inventory!\nTap here to create one.</string>
+    <string name="inventariosFAB">Create an Inventory</string>
+    <string name="inventarioDetalhesTituloAppBar">Inventory Details</string>
+    <string name="inventarioDetalhesTabLocais">Locations</string>
+    <string name="inventarioDetalhesTabCategorias">Categories</string>
+    <string name="inventarioDetalhesTabItens">Items</string>
+    <string name="inventarioDetalhesOpcoes">Item Options</string>
+</resources>

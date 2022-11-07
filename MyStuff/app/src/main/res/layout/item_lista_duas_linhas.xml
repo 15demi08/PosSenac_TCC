@@ -8,7 +8,7 @@
     android:background="?attr/selectableItemBackground">
 
     <TextView
-        android:id="@+id/txtvEtiquetaPrimaria"
+        android:id="@+id/txtvDuasLinhasNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -18,7 +18,7 @@
         tools:text="Nome do Item" />
 
     <TextView
-        android:id="@+id/txtvEtiquetaFixa"
+        android:id="@+id/txtvDuasLinhasInfoFixo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -26,18 +26,18 @@
         android:textColor="@color/cinzaEscuro"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtvEtiquetaPrimaria"
+        app:layout_constraintTop_toBottomOf="@+id/txtvDuasLinhasNome"
         tools:text="Itens:" />
 
     <TextView
-        android:id="@+id/txtvQuantidadeItens"
+        android:id="@+id/txtvDuasLinhasInfoVariavel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textColor="@color/cinzaEscuro"
         android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/txtvEtiquetaFixa"
-        app:layout_constraintTop_toBottomOf="@+id/txtvEtiquetaPrimaria"
+        app:layout_constraintStart_toEndOf="@+id/txtvDuasLinhasInfoFixo"
+        app:layout_constraintTop_toBottomOf="@+id/txtvDuasLinhasNome"
         tools:text=" XXX" />
 
     <View
@@ -51,10 +51,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtvEtiquetaFixa" />
+        app:layout_constraintTop_toBottomOf="@id/txtvDuasLinhasInfoFixo" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btnItemOpcoes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"

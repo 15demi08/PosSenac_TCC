@@ -9,31 +9,36 @@ import androidx.recyclerview.widget.RecyclerView
 import com.demetriusjr.mystuff.databinding.ItemListaBinding
 import com.demetriusjr.mystuff.db.Inventario
 
-class InventariosAdapter(val cl:IACL):ListAdapter<Inventario, InventariosAdapter.ViewHolder>(InventariosComparator()) {
+class InventariosAdapter(val cl:IACL):ListAdapter<Inventario, InventariosAdapter.IAVH>(InventariosComparator()) {
 
-    class ViewHolder(layout:ItemListaBinding):RecyclerView.ViewHolder(layout.root)
+    // InventariosAdapterViewHolder
+    class IAVH(layout:ItemListaBinding):RecyclerView.ViewHolder(layout.root)
+
+    interface IACL { // InventariosAdapterClickListener
+        fun onClick(inventario:Inventario)
+        fun onMenuClick(v:View, inventario:Inventario)
+    }
 
     class InventariosComparator:DiffUtil.ItemCallback<Inventario>() {
-        override fun areItemsTheSame(oldItem:Inventario, newItem:Inventario):Boolean = oldItem.idInventario == newItem.idInventario // IDs iguais = itens iguais, teoricamente
+        override fun areItemsTheSame(oldItem:Inventario, newItem:Inventario):Boolean = oldItem.idInventario == newItem.idInventario // IDs iguais = teoricamente, itens iguais
         override fun areContentsTheSame(oldItem:Inventario, newItem:Inventario):Boolean = oldItem.nome == newItem.nome // IDs iguais && conteúdo igual = definitivamente itens iguais
     }
 
-    override fun onCreateViewHolder(parent:ViewGroup, viewType:Int):ViewHolder =
-        ViewHolder(ItemListaBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    override fun onCreateViewHolder(parent:ViewGroup, viewType:Int):IAVH =
+        IAVH(ItemListaBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
-    override fun onBindViewHolder(holder:ViewHolder, position:Int) {
+    override fun onBindViewHolder(holder:IAVH, position:Int) {
         ItemListaBinding.bind(holder.itemView).apply {
             getItem(position).apply {
-                txtvEtiquetaPrimaria.text = this.nome
+                txtvUmaLinhaNome.text = this.nome
                 itemContainer.setOnClickListener {
                     cl.onClick(this)
                 }
+                btnOpcoes.setOnClickListener {
+                    cl.onMenuClick(it, this)
+                }
             }
         }
-    }
-
-    interface IACL { // InventariosAdapterClickListener
-        fun onClick(i:Inventario)
     }
 
 }

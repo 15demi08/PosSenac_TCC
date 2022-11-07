@@ -26,7 +26,7 @@
             android:layout_marginBottom="16dp"
             android:text="@string/inventariosTitulo"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/primaryTextColor"
+            android:textColor="@color/secondaryTextColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -34,7 +34,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rclvListaInventarios"
+        android:id="@+id/rclvLista"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,12 +71,14 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="?attr/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@+id/seta"
-        app:layout_constraintEnd_toStartOf="@+id/seta"
-        app:layout_constraintTop_toTopOf="@+id/seta" />
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/setaInventarios"
+        app:layout_constraintEnd_toStartOf="@+id/setaInventarios"
+        app:layout_constraintTop_toTopOf="@+id/setaInventarios"
+        tools:text="@string/inventariosMsgNenhumInventario" />
 
     <ImageView
-        android:id="@+id/seta"
+        android:id="@+id/setaInventarios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="-4dp"
@@ -86,6 +88,7 @@
         android:scaleY="1.5"
         android:src="@drawable/ic_round_shortcut_24"
         android:tint="?attr/colorPrimary"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/novoInventario"
         app:layout_constraintEnd_toEndOf="@+id/novoInventario"
         app:layout_constraintStart_toStartOf="@+id/novoInventario" />

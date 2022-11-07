@@ -3,7 +3,7 @@
     <string name="app_name">MyStuff</string>
     <string name="btnSalvar">Save</string>
     <string name="btnCancelar">Cancel</string>
-    <string name="btnExcluir">Delete</string>
+    <string name="menuExcluir">Delete</string>
     <string name="inventariosTitulo">Your Inventories</string>
     <string name="inventariosMsgNenhumInventario">No inventory!\nTap here to create one.</string>
     <string name="inventariosFAB">Create an Inventory</string>
@@ -12,4 +12,15 @@
     <string name="inventarioDetalhesTabCategorias">Categories</string>
     <string name="inventarioDetalhesTabItens">Items</string>
     <string name="inventarioDetalhesOpcoes">Item Options</string>
+    <string name="inventariosDialogoNovoInvTitulo">New Inventory</string>
+    <string name="inventariosDetalhesLocaisNenhumMsg">No saved Locations!\nTap here to create one.</string>
+    <string name="inventariosDetalhesCategoriasNenhumMsg">No saved Categories!\nTap here to create one.</string>
+    <string name="inventariosDetalhesItensNenhumOutroMsg">You need to create at least one Location and one Category before creating an Item.</string>
+    <string name="inventariosDetalhesItensNenhumMsg">No saved Items!\nTap here to create one.</string>
+    <string name="inventarioDetalhesDialogoNovoLocalTitulo">New Location</string>
+    <string name="toastNaoImplementado">Not Implemented</string>
+    <string name="menuEditar">Edit</string>
+    <string name="confirmarExclusao">Are you sure?</string>
+    <string name="inventariosDialogoEditarInvTitulo">Edit Inventory</string>
+    <string name="inventarioDetalhesDialogoEditarLocalTitulo">Edit Location</string>
 </resources>

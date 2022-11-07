@@ -2,7 +2,7 @@
     <string name="app_name">MyStuff</string>
     <string name="btnSalvar">Salvar</string>
     <string name="btnCancelar">Cancelar</string>
-    <string name="btnExcluir">Excluir</string>
+    <string name="menuExcluir">Excluir</string>
     <string name="inventariosTitulo">Seus Inventários</string>
     <string name="inventariosMsgNenhumInventario">Nenhum Inventário!\nClique aqui para criar um.</string>
     <string name="inventariosFAB">Criar um Inventário</string>
@@ -11,4 +11,15 @@
     <string name="inventarioDetalhesTabCategorias">Categorias</string>
     <string name="inventarioDetalhesTabItens">Itens</string>
     <string name="inventarioDetalhesOpcoes">Opções do Item</string>
+    <string name="inventariosDialogoNovoInvTitulo">Novo Inventário</string>
+    <string name="inventariosDetalhesLocaisNenhumMsg">Nenhum Local!\nToque aqui para criar um.</string>
+    <string name="inventariosDetalhesCategoriasNenhumMsg">Nenhuma Categoria!\nToque aqui para criar um.</string>
+    <string name="inventariosDetalhesItensNenhumOutroMsg">Você precisa criar ao menos um local e uma categoria antes de criar um item.</string>
+    <string name="inventariosDetalhesItensNenhumMsg">Nenhum Item!\nToque aqui para criar um.</string>
+    <string name="inventarioDetalhesDialogoNovoLocalTitulo">Novo Local</string>
+    <string name="toastNaoImplementado">Não Implementado</string>
+    <string name="menuEditar">Editar</string>
+    <string name="confirmarExclusao">Confirmar exclusão?</string>
+    <string name="inventariosDialogoEditarInvTitulo">Editar Inventário</string>
+    <string name="inventarioDetalhesDialogoEditarLocalTitulo">Editar Local</string>
 </resources>

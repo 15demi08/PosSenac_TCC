@@ -15,4 +15,11 @@ class Repositorio(
     suspend fun atualizar(inventario:Inventario) = inventarioDAO.atualizar(inventario)
     suspend fun excluir(inventario:Inventario) = inventarioDAO.excluir(inventario)
 
+    // Local
+    fun locais(idInventario:Long):Flow<List<Local>> = localDAO.consultarTodos(idInventario)
+    suspend fun local(idLocal:Long):Local = localDAO.consultarUm(idLocal)
+    suspend fun inserir(vararg locais:Local) = localDAO.inserir(*locais)
+    suspend fun atualizar(local:Local) = localDAO.atualizar(local)
+    suspend fun excluir(local:Local) = localDAO.excluir(local)
+
 }

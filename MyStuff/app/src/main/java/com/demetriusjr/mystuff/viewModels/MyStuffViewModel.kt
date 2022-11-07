@@ -2,12 +2,13 @@ package com.demetriusjr.mystuff.viewModels
 
 import androidx.lifecycle.*
 import com.demetriusjr.mystuff.db.Inventario
+import com.demetriusjr.mystuff.db.Local
 import com.demetriusjr.mystuff.db.Repositorio
 import kotlinx.coroutines.launch
 
-class MyStuffViewModel(
-    private val repositorio:Repositorio
-):ViewModel() {
+class MyStuffViewModel(private val repositorio:Repositorio):ViewModel() {
+
+    var objetoSelecionadoOpcoes:Any? = null // P/ menus
 
     // Inventário
     var inventarioSelecionado:Inventario? = null
@@ -16,6 +17,12 @@ class MyStuffViewModel(
     fun atualizar(inventario:Inventario) = viewModelScope.launch { repositorio.atualizar(inventario) }
     fun excluir(inventario:Inventario) = viewModelScope.launch { repositorio.excluir(inventario) }
 
+    // Local
+    var localSelecionado:Local? = null
+    fun locais(idInventario:Long):LiveData<List<Local>> = repositorio.locais(idInventario).asLiveData()
+    fun inserir(local:Local) = viewModelScope.launch { repositorio.inserir(local) }
+    fun atualizar(local:Local) = viewModelScope.launch { repositorio.atualizar(local) }
+    fun excluir(local:Local) = viewModelScope.launch { repositorio.excluir(local) }
 
 }
 

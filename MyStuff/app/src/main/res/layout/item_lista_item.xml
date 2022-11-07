@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground">
+
+    <TextView
+        android:id="@+id/txtvItemQuantidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/primaryColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Nome do Item" />
+
+    <TextView
+        android:id="@+id/txtvItemX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primaryColor"
+        app:layout_constraintBottom_toBottomOf="@+id/txtvItemQuantidade"
+        app:layout_constraintStart_toEndOf="@+id/txtvItemQuantidade"
+        app:layout_constraintTop_toTopOf="@+id/txtvItemQuantidade"
+        tools:text=" x " />
+
+    <TextView
+        android:id="@+id/txtvItemNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primaryTextColor"
+        app:layout_constraintBottom_toBottomOf="@+id/txtvItemQuantidade"
+        app:layout_constraintStart_toEndOf="@+id/txtvItemX"
+        app:layout_constraintTop_toTopOf="@+id/txtvItemQuantidade"
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="Nome do Item" />
+
+    <TextView
+        android:id="@+id/txtvItemEtiquetaLocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnItemLocal"
+        app:layout_constraintEnd_toEndOf="@+id/txtvItemEtiquetaCategorias"
+        app:layout_constraintTop_toTopOf="@+id/btnItemLocal"
+        tools:text="Local" />
+
+    <TextView
+        android:id="@+id/txtvItemEtiquetaCategorias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnItemCategoria"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnItemCategoria"
+        tools:text="Categoria" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnItemOpcoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="?attr/selectableItemBackground"
+        android:contentDescription="@string/inventarioDetalhesOpcoes"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_round_more_vert_24"
+        app:tint="@color/preto50" />
+
+    <Button
+        android:id="@+id/btnItemLocal"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:minHeight="48dp"
+        android:textColor="@color/secondaryTextColor"
+        app:backgroundTint="@color/primaryColor"
+        app:layout_constraintStart_toStartOf="@+id/btnItemCategoria"
+        app:layout_constraintTop_toBottomOf="@+id/txtvItemX"
+        tools:text="Armário do Banheiro" />
+
+    <Button
+        android:id="@+id/btnItemCategoria"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="24dp"
+        android:minHeight="48dp"
+        android:textColor="@color/secondaryTextColor"
+        app:backgroundTint="@color/cinzaEscuro"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintStart_toEndOf="@+id/txtvItemEtiquetaCategorias"
+        app:layout_constraintTop_toBottomOf="@+id/btnItemLocal"
+        tools:text="Teste" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

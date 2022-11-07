@@ -1,6 +1,7 @@
 package com.demetriusjr.mystuff.db
 
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Entity
 data class Local (
@@ -22,9 +23,9 @@ interface LocalDAO {
     suspend fun excluir(local:Local)
 
     @Query("SELECT * FROM local WHERE idLocal = :idLocal")
-    suspend fun consultar(idLocal:Long):Local
+    suspend fun consultarUm(idLocal:Long):Local
 
-    @Query("SELECT * FROM local JOIN inventario USING(idInventario)")
-    suspend fun consultar():List<Local>
+    @Query("SELECT * FROM local WHERE idInventario = :idInventario")
+    fun consultarTodos(idInventario:Long):Flow<List<Local>>
 
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menuOpcaoEditar"
+        android:icon="@drawable/ic_round_edit_24"
+        android:title="@string/menuEditar"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/menuOpcaoExcluir"
+        android:icon="@drawable/ic_round_delete_24"
+        android:title="@string/menuExcluir" />
+</menu>

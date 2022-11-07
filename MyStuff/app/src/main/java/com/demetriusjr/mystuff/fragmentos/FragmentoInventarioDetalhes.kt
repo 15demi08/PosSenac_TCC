@@ -1,18 +1,15 @@
 package com.demetriusjr.mystuff.fragmentos
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.navGraphViewModels
-import com.demetriusjr.mystuff.MyStuffApplication
 import com.demetriusjr.mystuff.R
 import com.demetriusjr.mystuff.databinding.FragmentoInventarioDetalhesBinding
-import com.demetriusjr.mystuff.databinding.FragmentoInventarioDetalhesLocaisBinding
 import com.demetriusjr.mystuff.fragmentos.utilidades.InventarioDetalhesPaginasAdapter
 import com.demetriusjr.mystuff.viewModels.MyStuffViewModel
-import com.demetriusjr.mystuff.viewModels.MyStuffViewModelFactory
 import com.google.android.material.tabs.TabLayoutMediator
 
 class FragmentoInventarioDetalhes:Fragment() {

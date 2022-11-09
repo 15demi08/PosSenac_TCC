@@ -1,33 +1,29 @@
 package com.demetriusjr.mystuff.db
 
 import androidx.room.*
+import androidx.room.ForeignKey.CASCADE
+import androidx.room.ForeignKey.SET_NULL
+import kotlinx.coroutines.flow.Flow
 
-@Entity
+@Entity(
+    foreignKeys = [
+        ForeignKey(entity = Inventario::class, parentColumns = ["idInventario"], childColumns = ["idInventario"], onDelete = CASCADE)
+    ]
+)
 data class Categoria(
     @PrimaryKey(autoGenerate = true) val idCategoria:Long,
-    val nome:String?
+    val nome:String?,
+    val idInventario:Long
 )
 
 @Dao
-interface CategoriaDAO {
+interface CategoriaDAO:DB.BaseDAO<Categoria> {
 
-    @Insert
-    suspend fun inserir(vararg categorias:Categoria)
-
-    @Update
-    suspend fun atualizar(categoria:Categoria)
-
-    @Delete
-    suspend fun excluir(categoria:Categoria)
-
-    @Query("SELECT * FROM categoria")
-    suspend fun consultar():List<Categoria>
-
-    @Query("SELECT * FROM categoria WHERE idCategoria = :idCategoria")
-    suspend fun consultar(idCategoria:Long):Categoria
+    @Query("SELECT * FROM categoria WHERE idInventario = :idInventario ORDER BY nome ASC")
+    fun consultar(idInventario:Long):Flow<List<Categoria>>
 
     @Transaction
-    @Query("SELECT * FROM categoria WHERE idCategoria= :idCategoria")
-    suspend fun consultarComItens(idCategoria:Long):CategoriaComItens
+    @Query("SELECT * FROM categoria WHERE idCategoria = :idCategoria")
+    fun consultarComItensLocais(idCategoria:Long):CategoriaComItensLocais
 
 }

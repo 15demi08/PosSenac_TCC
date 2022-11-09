@@ -1,9 +1,14 @@
 package com.demetriusjr.mystuff.db
 
 import androidx.room.*
+import androidx.room.ForeignKey.CASCADE
 import kotlinx.coroutines.flow.Flow
 
-@Entity
+@Entity(
+    foreignKeys = [
+        ForeignKey(entity = Inventario::class, parentColumns = ["idInventario"], childColumns = ["idInventario"], onDelete = CASCADE)
+    ]
+)
 data class Local (
     @PrimaryKey(autoGenerate = true) val idLocal:Long,
     val nome:String?,
@@ -11,21 +16,9 @@ data class Local (
 )
 
 @Dao
-interface LocalDAO {
+interface LocalDAO:DB.BaseDAO<Local> {
 
-    @Insert
-    suspend fun inserir(vararg local:Local)
-
-    @Update
-    suspend fun atualizar(local:Local)
-
-    @Delete
-    suspend fun excluir(local:Local)
-
-    @Query("SELECT * FROM local WHERE idLocal = :idLocal")
-    suspend fun consultarUm(idLocal:Long):Local
-
-    @Query("SELECT * FROM local WHERE idInventario = :idInventario")
-    fun consultarTodos(idInventario:Long):Flow<List<Local>>
+    @Query("SELECT * FROM local WHERE idInventario = :idInventario ORDER BY nome ASC")
+    fun consultar(idInventario:Long):Flow<List<Local>>
 
 }

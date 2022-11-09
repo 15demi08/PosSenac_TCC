@@ -6,20 +6,38 @@ class Repositorio(
     private val inventarioDAO:InventarioDAO,
     private val localDAO:LocalDAO,
     private val itemDAO:ItemDAO,
-    private val categoriaDAO:CategoriaDAO
+    private val categoriaDAO:CategoriaDAO,
+    private val itemCategoriaDAO:ItemCategoriaDAO
 ) {
 
     // Inventário
     val inventarios:Flow<List<Inventario>> = inventarioDAO.consultar()
-    suspend fun inserir(vararg inventarios:Inventario) = inventarioDAO.inserir(*inventarios)
+    suspend fun inserir(inventario:Inventario) = inventarioDAO.inserir(inventario)
     suspend fun atualizar(inventario:Inventario) = inventarioDAO.atualizar(inventario)
     suspend fun excluir(inventario:Inventario) = inventarioDAO.excluir(inventario)
 
     // Local
-    fun locais(idInventario:Long):Flow<List<Local>> = localDAO.consultarTodos(idInventario)
-    suspend fun local(idLocal:Long):Local = localDAO.consultarUm(idLocal)
-    suspend fun inserir(vararg locais:Local) = localDAO.inserir(*locais)
+    fun locais(idInventario:Long):Flow<List<Local>> = localDAO.consultar(idInventario)
+    suspend fun inserir(local:Local) = localDAO.inserir(local)
     suspend fun atualizar(local:Local) = localDAO.atualizar(local)
     suspend fun excluir(local:Local) = localDAO.excluir(local)
+
+    // Categoria
+    fun categorias(idInventario:Long):Flow<List<Categoria>> = categoriaDAO.consultar(idInventario)
+    suspend fun inserir(categoria:Categoria) = categoriaDAO.inserir(categoria)
+    suspend fun atualizar(categoria:Categoria) = categoriaDAO.atualizar(categoria)
+    suspend fun excluir(categoria:Categoria) = categoriaDAO.excluir(categoria)
+
+    // Item
+    fun itensPorInventario(idInventario:Long):Flow<List<ItemComLocalCategorias>> = itemDAO.consultar(idInventario)
+    fun itensPorLocal(idLocal:Long):Flow<List<ItemComCategorias>> = itemDAO.consultarPorLocal(idLocal)
+    suspend fun inserir(item:Item) = itemDAO.inserir(item)
+    suspend fun atualizar(item:Item) = itemDAO.atualizar(item)
+    suspend fun excluir(item:Item) = itemDAO.excluir(item)
+
+    // ItemCategoria
+    suspend fun inserir(itemCategoria:ItemCategoria) = itemCategoriaDAO.inserir(itemCategoria)
+    suspend fun atualizar(itemCategoria:ItemCategoria) = itemCategoriaDAO.atualizar(itemCategoria)
+    suspend fun excluir(itemCategoria:ItemCategoria) = itemCategoriaDAO.excluir(itemCategoria)
 
 }

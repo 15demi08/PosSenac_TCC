@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MyStuff</string>
     <string name="btnSalvar">Save</string>
     <string name="btnCancelar">Cancel</string>
     <string name="menuExcluir">Delete</string>
@@ -23,4 +22,6 @@
     <string name="confirmarExclusao">Are you sure?</string>
     <string name="inventariosDialogoEditarInvTitulo">Edit Inventory</string>
     <string name="inventarioDetalhesDialogoEditarLocalTitulo">Edit Location</string>
+    <string name="dialogoExclusaoInventario">Deleting this Inventory will delete all data ssociated with it (Locations, Categories and Items). Proceed?</string>
+    <string name="dialogoExclusaoLocal">Deleting this Location will remove its Items\' associations with it. The Items themselves won\'t be deleted, but you\'ll need to associate them with new Locations, if you\'d like. Proceed?</string>
 </resources>

@@ -10,23 +10,34 @@ import com.demetriusjr.mystuff.db.Inventario
 import com.demetriusjr.mystuff.db.Local
 import com.demetriusjr.mystuff.viewModels.MyStuffViewModel
 
-class DialogoConfirmarExclusao(val viewModel:MyStuffViewModel):DialogFragment() {
+class DialogoConfirmarExclusao(val viewModel:MyStuffViewModel, val msg:Int):DialogFragment() {
 
-    override fun onCreateDialog(savedInstanceState:Bundle?):Dialog =
-        AlertDialog.Builder(requireContext())
-            .setTitle(R.string.confirmarExclusao)
-            .setPositiveButton(R.string.menuExcluir, DialogInterface.OnClickListener { _, _ ->
+    private lateinit var dialogo:AlertDialog.Builder
+
+    override fun onCreate(savedInstanceState:Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        dialogo = AlertDialog.Builder(requireContext()).apply {
+
+            setTitle(R.string.confirmarExclusao)
+            setMessage(msg)
+            setPositiveButton(R.string.menuExcluir, DialogInterface.OnClickListener { _, _ ->
                 viewModel.apply {
                     objetoSelecionadoOpcoes.let {
-                        when(it){
+                        when (it) {
                             is Inventario -> excluir(it as Inventario)
                             is Local -> excluir(it as Local)
                         }
                     }
                 }
             })
-            .setNeutralButton(R.string.btnCancelar, null)
-            .create()
+            setNeutralButton(R.string.btnCancelar, null)
+
+        }
+
+    }
+
+    override fun onCreateDialog(savedInstanceState:Bundle?):Dialog = dialogo.create()
 
     override fun onDismiss(dialog:DialogInterface) {
         super.onDismiss(dialog)

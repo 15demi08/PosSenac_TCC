@@ -1,28 +1,51 @@
 package com.demetriusjr.mystuff.viewModels
 
 import androidx.lifecycle.*
-import com.demetriusjr.mystuff.db.Inventario
-import com.demetriusjr.mystuff.db.Local
-import com.demetriusjr.mystuff.db.Repositorio
+import com.demetriusjr.mystuff.db.*
 import kotlinx.coroutines.launch
 
 class MyStuffViewModel(private val repositorio:Repositorio):ViewModel() {
 
-    var objetoSelecionadoOpcoes:Any? = null // P/ menus
-
     // Inventário
     var inventarioSelecionado:Inventario? = null
     val inventarios:LiveData<List<Inventario>> = repositorio.inventarios.asLiveData()
-    fun inserir(inventario:Inventario) = viewModelScope.launch { repositorio.inserir(inventario) }
-    fun atualizar(inventario:Inventario) = viewModelScope.launch { repositorio.atualizar(inventario) }
-    fun excluir(inventario:Inventario) = viewModelScope.launch { repositorio.excluir(inventario) }
 
     // Local
     var localSelecionado:Local? = null
     fun locais(idInventario:Long):LiveData<List<Local>> = repositorio.locais(idInventario).asLiveData()
-    fun inserir(local:Local) = viewModelScope.launch { repositorio.inserir(local) }
-    fun atualizar(local:Local) = viewModelScope.launch { repositorio.atualizar(local) }
-    fun excluir(local:Local) = viewModelScope.launch { repositorio.excluir(local) }
+
+    // P/ menus
+    var objetoSelecionadoOpcoes:Any? = null
+
+    fun inserir(obj:Any) {
+        when(obj){
+            is Inventario -> viewModelScope.launch { repositorio.inserir(obj) }
+            is Local -> viewModelScope.launch { repositorio.inserir(obj) }
+            is Categoria -> viewModelScope.launch { repositorio.inserir(obj) }
+            is Item -> viewModelScope.launch { repositorio.inserir(obj) }
+            is ItemCategoria -> viewModelScope.launch { repositorio.inserir(obj) }
+        }
+    }
+
+    fun atualizar(obj:Any) {
+        when(obj){
+            is Inventario -> viewModelScope.launch { repositorio.atualizar(obj) }
+            is Local -> viewModelScope.launch { repositorio.atualizar(obj) }
+            is Categoria -> viewModelScope.launch { repositorio.atualizar(obj) }
+            is Item -> viewModelScope.launch { repositorio.atualizar(obj) }
+            is ItemCategoria -> viewModelScope.launch { repositorio.atualizar(obj) }
+        }
+    }
+
+    fun excluir(obj:Any) {
+        when(obj){
+            is Inventario -> viewModelScope.launch { repositorio.excluir(obj) }
+            is Local -> viewModelScope.launch { repositorio.excluir(obj) }
+            is Categoria -> viewModelScope.launch { repositorio.excluir(obj) }
+            is Item -> viewModelScope.launch { repositorio.excluir(obj) }
+            is ItemCategoria -> viewModelScope.launch { repositorio.excluir(obj) }
+        }
+    }
 
 }
 

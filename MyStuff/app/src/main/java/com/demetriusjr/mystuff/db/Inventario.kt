@@ -10,18 +10,9 @@ data class Inventario (
 )
 
 @Dao
-interface InventarioDAO {
+interface InventarioDAO:DB.BaseDAO<Inventario> {
 
-    @Insert
-    suspend fun inserir(vararg inventarios:Inventario)
-
-    @Update
-    suspend fun atualizar(inventario:Inventario)
-
-    @Delete
-    suspend fun excluir(inventario:Inventario)
-
-    @Query("SELECT * FROM inventario")
+    @Query("SELECT * FROM inventario ORDER BY nome ASC")
     fun consultar():Flow<List<Inventario>>
 
 }

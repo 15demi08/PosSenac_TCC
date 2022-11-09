@@ -28,7 +28,6 @@ class FragmentoInventarios:InventariosAdapter.IACL, PopupMenu.OnMenuItemClickLis
     private val b get() = _b
 
 
-
     private lateinit var app:MyStuffApplication
     private val viewModel:MyStuffViewModel by navGraphViewModels(R.id.navegacao) { MyStuffViewModelFactory(app.repositorio) }
 
@@ -79,6 +78,7 @@ class FragmentoInventarios:InventariosAdapter.IACL, PopupMenu.OnMenuItemClickLis
         viewModel.objetoSelecionadoOpcoes = inventario
         PopupMenu(requireContext(), v).apply {
             setOnMenuItemClickListener(this@FragmentoInventarios)
+            setOnDismissListener { viewModel.objetoSelecionadoOpcoes = null }
             inflate(R.menu.item_opcoes)
             show()
         }
@@ -88,7 +88,7 @@ class FragmentoInventarios:InventariosAdapter.IACL, PopupMenu.OnMenuItemClickLis
     override fun onMenuItemClick(item:MenuItem):Boolean {
         when (item.itemId) {
             R.id.menuOpcaoEditar -> dialogoInventario()
-            R.id.menuOpcaoExcluir -> DialogoConfirmarExclusao(viewModel).show(parentFragmentManager, "confirmarExlusao")
+            R.id.menuOpcaoExcluir -> DialogoConfirmarExclusao(viewModel, R.string.dialogoExclusaoInventario).show(parentFragmentManager, "confirmarExlusao")
         }
         return false
     }

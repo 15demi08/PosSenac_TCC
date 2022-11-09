@@ -8,26 +8,25 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.demetriusjr.mystuff.R
-import com.demetriusjr.mystuff.databinding.FragmentoInventarioDetalhesListaBinding
+import com.demetriusjr.mystuff.databinding.FragmentoInventarioDetalhesLocaisBinding
 import com.demetriusjr.mystuff.db.Local
 import com.demetriusjr.mystuff.fragmentos.dialogos.DialogoConfirmarExclusao
 import com.demetriusjr.mystuff.fragmentos.dialogos.DialogoLocal
 import com.demetriusjr.mystuff.fragmentos.utilidades.LocaisAdapter
 import com.demetriusjr.mystuff.viewModels.MyStuffViewModel
 
-open class FragmentoInventarioDetalhesLocais(val viewModel:MyStuffViewModel):LocaisAdapter.LACL, PopupMenu.OnMenuItemClickListener,  Fragment() {
+open class FragmentoInventarioDetalhesLocais(private val viewModel:MyStuffViewModel):LocaisAdapter.LACL, PopupMenu.OnMenuItemClickListener,  Fragment() {
 
-    private lateinit var _b:FragmentoInventarioDetalhesListaBinding
+    private lateinit var _b:FragmentoInventarioDetalhesLocaisBinding
     private val b get() = _b
 
     override fun onCreateView(
         inflater:LayoutInflater, container:ViewGroup?,
         savedInstanceState:Bundle?
     ):View {
-        _b = FragmentoInventarioDetalhesListaBinding.inflate(layoutInflater)
+        _b = FragmentoInventarioDetalhesLocaisBinding.inflate(layoutInflater)
         return b.root
     }
 
@@ -36,7 +35,10 @@ open class FragmentoInventarioDetalhesLocais(val viewModel:MyStuffViewModel):Loc
 
         b.apply {
 
-            btnNovoItemLista.setOnClickListener { dialogoLocal() }
+            btnNovoItemLista.setOnClickListener {
+                viewModel.objetoSelecionadoOpcoes = null
+                dialogoLocal()
+            }
             rclvLista.apply {
                 layoutManager = LinearLayoutManager(this@FragmentoInventarioDetalhesLocais.requireContext())
                 adapter = LocaisAdapter(this@FragmentoInventarioDetalhesLocais)
@@ -44,7 +46,7 @@ open class FragmentoInventarioDetalhesLocais(val viewModel:MyStuffViewModel):Loc
 
         }
 
-        viewModel.locais(viewModel.inventarioSelecionado!!.idInventario).observe(viewLifecycleOwner, Observer { lista ->
+        viewModel.locais(viewModel.inventarioSelecionado!!.idInventario).observe(viewLifecycleOwner) { lista ->
 
             (if (lista.isEmpty()) View.VISIBLE else View.GONE).let { visibilidade ->
                 b.setaLista.visibility = visibilidade
@@ -52,7 +54,7 @@ open class FragmentoInventarioDetalhesLocais(val viewModel:MyStuffViewModel):Loc
             }
             (b.rclvLista.adapter as LocaisAdapter).submitList(lista)
 
-        })
+        }
 
     }
 
@@ -62,6 +64,7 @@ open class FragmentoInventarioDetalhesLocais(val viewModel:MyStuffViewModel):Loc
         viewModel.objetoSelecionadoOpcoes = local
         PopupMenu(requireContext(), v).apply {
             setOnMenuItemClickListener(this@FragmentoInventarioDetalhesLocais)
+            setOnDismissListener { viewModel.objetoSelecionadoOpcoes = null }
             inflate(R.menu.item_opcoes)
             show()
         }
@@ -70,18 +73,13 @@ open class FragmentoInventarioDetalhesLocais(val viewModel:MyStuffViewModel):Loc
     override fun onMenuItemClick(item:MenuItem):Boolean {
         when (item.itemId) {
             R.id.menuOpcaoEditar -> dialogoLocal()
-            R.id.menuOpcaoExcluir -> DialogoConfirmarExclusao(viewModel).show(parentFragmentManager, "confirmarExlusao")
+            R.id.menuOpcaoExcluir -> DialogoConfirmarExclusao(viewModel, R.string.dialogoExclusaoLocal).show(parentFragmentManager, "confirmarExlusao")
         }
         return false
     }
 
-    fun dialogoLocal() = DialogoLocal(viewModel, layoutInflater).show(parentFragmentManager, "novoLocal")
+    private fun dialogoLocal() = DialogoLocal(viewModel, layoutInflater).show(parentFragmentManager, "novoLocal")
 
-    fun mostrarToast() = Toast.makeText(context, R.string.toastNaoImplementado, Toast.LENGTH_SHORT).show()
-
-    companion object {
-        @JvmStatic
-        fun newInstance(vm:MyStuffViewModel) = FragmentoInventarioDetalhesLocais(vm)
-    }
+    private fun mostrarToast() = Toast.makeText(context, R.string.toastNaoImplementado, Toast.LENGTH_SHORT).show()
 
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyStuff</string>
+    <string name="app_name" translatable="false">MyStuff</string>
     <string name="btnSalvar">Salvar</string>
     <string name="btnCancelar">Cancelar</string>
     <string name="menuExcluir">Excluir</string>
@@ -22,4 +22,6 @@
     <string name="confirmarExclusao">Confirmar exclusão?</string>
     <string name="inventariosDialogoEditarInvTitulo">Editar Inventário</string>
     <string name="inventarioDetalhesDialogoEditarLocalTitulo">Editar Local</string>
+    <string name="dialogoExclusaoInventario">Excluir este Inventário excluirá todos os dados associados a ele (Locais, Itens e Categorias). Prosseguir?</string>
+    <string name="dialogoExclusaoLocal">Excluir este Local apagará as associações dos respectivos Itens com ele. Os Itens não serão excluídos, mas você terá que associá-los com novos Locais, se desejar. Prosseguir?</string>
 </resources>

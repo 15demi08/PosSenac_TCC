@@ -14,10 +14,7 @@ class LocaisAdapter(val cl:LACL):ListAdapter<Local, LocaisAdapter.LAVH>(ItemComp
     // LocaisAdapterViewHolder
     class LAVH(layout:ItemListaBinding):RecyclerView.ViewHolder(layout.root)
 
-    interface LACL { // LocaisAdapterClickListener
-        fun onClick(local:Local)
-        fun onMenuClick(v:View, local:Local)
-    }
+    interface LACL:BACL<Local>
 
     class ItemComparator:DiffUtil.ItemCallback<Local>() {
         override fun areItemsTheSame(oldItem:Local, newItem:Local):Boolean = oldItem.idLocal == newItem.idLocal
@@ -31,12 +28,9 @@ class LocaisAdapter(val cl:LACL):ListAdapter<Local, LocaisAdapter.LAVH>(ItemComp
         ItemListaBinding.bind(holder.itemView).apply {
             getItem(position).apply {
                 txtvUmaLinhaNome.text = this.nome
-                itemContainer.setOnClickListener {
-                    cl.onClick(this)
-                }
-                btnOpcoes.setOnClickListener {
-                    cl.onMenuClick(it, this)
-                }
+                itemContainer.setOnClickListener { cl.onClick(this) }
+                btnEditar.setOnClickListener { cl.onBtnClick(it, this) }
+                btnExcluir.setOnClickListener { cl.onBtnClick(it, this) }
             }
         }
     }

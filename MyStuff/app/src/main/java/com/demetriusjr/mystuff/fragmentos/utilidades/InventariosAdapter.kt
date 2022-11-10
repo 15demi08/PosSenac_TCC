@@ -14,10 +14,7 @@ class InventariosAdapter(val cl:IACL):ListAdapter<Inventario, InventariosAdapter
     // InventariosAdapterViewHolder
     class IAVH(layout:ItemListaBinding):RecyclerView.ViewHolder(layout.root)
 
-    interface IACL { // InventariosAdapterClickListener
-        fun onClick(inventario:Inventario)
-        fun onMenuClick(v:View, inventario:Inventario)
-    }
+    interface IACL:BACL<Inventario>
 
     class InventariosComparator:DiffUtil.ItemCallback<Inventario>() {
         override fun areItemsTheSame(oldItem:Inventario, newItem:Inventario):Boolean = oldItem.idInventario == newItem.idInventario // IDs iguais = teoricamente, itens iguais
@@ -31,12 +28,9 @@ class InventariosAdapter(val cl:IACL):ListAdapter<Inventario, InventariosAdapter
         ItemListaBinding.bind(holder.itemView).apply {
             getItem(position).apply {
                 txtvUmaLinhaNome.text = this.nome
-                itemContainer.setOnClickListener {
-                    cl.onClick(this)
-                }
-                btnOpcoes.setOnClickListener {
-                    cl.onMenuClick(it, this)
-                }
+                itemContainer.setOnClickListener { cl.onClick(this) }
+                btnEditar.setOnClickListener { cl.onBtnClick(it, this) }
+                btnExcluir.setOnClickListener { cl.onBtnClick(it, this) }
             }
         }
     }

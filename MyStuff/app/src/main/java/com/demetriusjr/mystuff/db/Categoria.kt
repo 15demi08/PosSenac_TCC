@@ -22,8 +22,15 @@ interface CategoriaDAO:DB.BaseDAO<Categoria> {
     @Query("SELECT * FROM categoria WHERE idInventario = :idInventario ORDER BY nome ASC")
     fun consultar(idInventario:Long):Flow<List<Categoria>>
 
-    @Transaction
-    @Query("SELECT * FROM categoria WHERE idCategoria = :idCategoria")
-    fun consultarComItensLocais(idCategoria:Long):CategoriaComItensLocais
+    // @Transaction
+    // @Query("SELECT * FROM categoria WHERE idCategoria = :idCategoria")
+    // fun consultarComItensLocais(idCategoria:Long):CategoriaComItensLocais
+
+    // @Query("SELECT * FROM categoria " +
+    //         "JOIN itemcategoria USING(idCategoria) " +
+    //         "JOIN item USING(idItem) " +
+    //         "JOIN local USING(idLocal) " +
+    //         "WHERE idCategoria = :idCategoria")
+    // fun consultarItensLocais(idCategoria:Long):Map<Item, Local>
 
 }

@@ -24,4 +24,7 @@
     <string name="inventarioDetalhesDialogoEditarLocalTitulo">Edit Location</string>
     <string name="dialogoExclusaoInventario">Deleting this Inventory will delete all data ssociated with it (Locations, Categories and Items). Proceed?</string>
     <string name="dialogoExclusaoLocal">Deleting this Location will remove its Items\' associations with it. The Items themselves won\'t be deleted, but you\'ll need to associate them with new Locations, if you\'d like. Proceed?</string>
+    <string name="dialogoExclusaoCategoria">Deleting this category will delete its Items\' associations with it. The Items themselves won\'t be deleted. Proceed?</string>
+    <string name="inventarioDetalhesDialogoEditarCategoriaTitulo">Edit Category</string>
+    <string name="inventarioDetalhesDialogoNovaCategoriaTitulo">New Category</string>
 </resources>

@@ -3,12 +3,10 @@ package com.demetriusjr.mystuff.fragmentos
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.PopupMenu
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,7 +20,7 @@ import com.demetriusjr.mystuff.fragmentos.utilidades.InventariosAdapter
 import com.demetriusjr.mystuff.viewModels.MyStuffViewModel
 import com.demetriusjr.mystuff.viewModels.MyStuffViewModelFactory
 
-class FragmentoInventarios:InventariosAdapter.IACL, PopupMenu.OnMenuItemClickListener,  Fragment() {
+class FragmentoInventarios:InventariosAdapter.IACL, Fragment() {
 
     private lateinit var _b:FragmentoInventariosBinding
     private val b get() = _b
@@ -48,14 +46,17 @@ class FragmentoInventarios:InventariosAdapter.IACL, PopupMenu.OnMenuItemClickLis
         super.onViewCreated(view, savedInstanceState)
 
         b.apply {
-            novoInventario.setOnClickListener { dialogoInventario() }
+            novoInventario.setOnClickListener {
+                viewModel.inventarioSelecionado = null
+                dialogoInventario()
+            }
             rclvLista.apply {
                 layoutManager = LinearLayoutManager(this@FragmentoInventarios.requireContext())
                 adapter = InventariosAdapter(this@FragmentoInventarios)
             }
         }
 
-        viewModel.inventarios.observe(viewLifecycleOwner, Observer { lista ->
+        viewModel.inventarios.observe(viewLifecycleOwner) { lista ->
 
             (if (lista.isEmpty()) View.VISIBLE else View.GONE).let { visibilidade ->
                 b.setaInventarios.visibility = visibilidade
@@ -63,34 +64,26 @@ class FragmentoInventarios:InventariosAdapter.IACL, PopupMenu.OnMenuItemClickLis
             }
             (b.rclvLista.adapter as InventariosAdapter).submitList(lista)
 
-        })
+        }
     }
 
     fun dialogoInventario() = DialogoInventario(viewModel, layoutInflater).show(parentFragmentManager, "dialogoInventario")
 
-    override fun onClick(inventario:Inventario) {
-        viewModel.inventarioSelecionado = inventario
+    override fun onClick(obj:Inventario) { // Item da Lista
+        viewModel.inventarioSelecionado = obj
         findNavController().navigate(R.id.action_fragmentoInventarios_to_fragmentoInventarioDetalhes)
     }
 
-    // Adapter
-    override fun onMenuClick(v:View, inventario:Inventario) {
-        viewModel.objetoSelecionadoOpcoes = inventario
-        PopupMenu(requireContext(), v).apply {
-            setOnMenuItemClickListener(this@FragmentoInventarios)
-            setOnDismissListener { viewModel.objetoSelecionadoOpcoes = null }
-            inflate(R.menu.item_opcoes)
-            show()
+    override fun onBtnClick(v:View, obj:Inventario) { // Botão do item da lista
+        viewModel.inventarioSelecionado = obj
+        when ((v as ImageButton).id) {
+            R.id.btnEditar -> dialogoInventario()
+            R.id.btnExcluir -> DialogoConfirmarExclusao(
+                viewModel,
+                R.string.dialogoExclusaoInventario,
+                DialogoConfirmarExclusao.INVENTARIO
+            ).show(parentFragmentManager, "excluirInventario")
         }
-    }
-
-    // PopupMenu
-    override fun onMenuItemClick(item:MenuItem):Boolean {
-        when (item.itemId) {
-            R.id.menuOpcaoEditar -> dialogoInventario()
-            R.id.menuOpcaoExcluir -> DialogoConfirmarExclusao(viewModel, R.string.dialogoExclusaoInventario).show(parentFragmentManager, "confirmarExlusao")
-        }
-        return false
     }
 
     companion object {

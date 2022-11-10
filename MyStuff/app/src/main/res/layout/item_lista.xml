@@ -21,9 +21,7 @@
         android:id="@+id/divider"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,18 +29,32 @@
         app:layout_constraintTop_toBottomOf="@+id/txtvUmaLinhaNome" />
 
     <ImageButton
-        android:id="@+id/btnOpcoes"
+        android:id="@+id/btnEditar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
+        android:layout_height="0dp"
         android:background="?attr/selectableItemBackground"
-        android:contentDescription="@string/inventarioDetalhesOpcoes"
-        android:minWidth="48dp"
+        android:contentDescription="@string/menuEditar"
+        android:minWidth="52dp"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintEnd_toStartOf="@+id/btnExcluir"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.526"
+        app:srcCompat="@drawable/ic_round_edit_24"
+        app:tint="@color/preto50" />
+
+    <ImageButton
+        android:id="@+id/btnExcluir"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="?attr/selectableItemBackground"
+        android:contentDescription="@string/menuExcluir"
+        android:minWidth="52dp"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_round_more_vert_24"
-        app:tint="@color/preto50" />
+        app:srcCompat="@drawable/ic_round_delete_24"
+        app:tint="@color/vermelhoPrimario" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

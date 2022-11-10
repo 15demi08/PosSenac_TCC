@@ -14,8 +14,9 @@ class MyStuffViewModel(private val repositorio:Repositorio):ViewModel() {
     var localSelecionado:Local? = null
     fun locais(idInventario:Long):LiveData<List<Local>> = repositorio.locais(idInventario).asLiveData()
 
-    // P/ menus
-    var objetoSelecionadoOpcoes:Any? = null
+    // Categoria
+    var categoriaSelecionada:Categoria? = null
+    fun categorias(idInventario:Long):LiveData<List<Categoria>> = repositorio.categorias(idInventario).asLiveData()
 
     fun inserir(obj:Any) {
         when(obj){

@@ -4,17 +4,6 @@ import androidx.room.*
 import androidx.room.ForeignKey.CASCADE
 
 /**
- * Item (1)<->(1) Local
- */
-data class ItemLocal(
-    @Embedded
-    val item:Item,
-    @Relation(parentColumn = "idLocal", entityColumn = "idLocal")
-    val local:Local
-)
-
-
-/**
  * Item (n)<->(n) Categoria
  */
 
@@ -58,10 +47,4 @@ data class ItemComLocalCategorias(
     val local:Local,
     @Relation(parentColumn = "idItem",entityColumn = "idCategoria",associateBy = Junction(ItemCategoria::class))
     val categorias:List<Categoria>
-)
-
-data class CategoriaComItensLocais(
-    @Embedded val categoria:Categoria,
-    @Relation(parentColumn = "idCategoria", entityColumn = "idItem", associateBy = Junction(ItemCategoria::class))
-    val itemLocal:List<ItemLocal>
 )

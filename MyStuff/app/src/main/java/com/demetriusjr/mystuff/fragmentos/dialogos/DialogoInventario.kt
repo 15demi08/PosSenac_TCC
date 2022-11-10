@@ -16,7 +16,7 @@ class DialogoInventario(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dia
 
         visibilidadeCamposAdicionais = View.GONE
 
-        if(viewModel.objetoSelecionadoOpcoes == null){
+        if(viewModel.inventarioSelecionado == null){
 
             idTitulo = R.string.inventariosDialogoNovoInvTitulo
 
@@ -28,13 +28,11 @@ class DialogoInventario(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dia
 
             idTitulo = R.string.inventariosDialogoEditarInvTitulo
 
-            dialogoBinding.txteNome.setText((viewModel.objetoSelecionadoOpcoes as Inventario).nome)
+            dialogoBinding.txteNome.setText(viewModel.inventarioSelecionado!!.nome)
 
             positivoClickListener = DialogInterface.OnClickListener { _,_ ->
                 viewModel.apply {
-                    (objetoSelecionadoOpcoes as Inventario).let {
-                        atualizar(it.copy(nome = dialogoBinding.txteNome.text.toString()))
-                    }
+                    atualizar(inventarioSelecionado!!.copy(nome = dialogoBinding.txteNome.text.toString()))
                 }
             }
 
@@ -42,6 +40,11 @@ class DialogoInventario(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dia
 
         idNeutro = R.string.btnCancelar
 
+    }
+
+    override fun onDismiss(dialog:DialogInterface) {
+        super.onDismiss(dialog)
+        viewModel.inventarioSelecionado = null
     }
 
 }

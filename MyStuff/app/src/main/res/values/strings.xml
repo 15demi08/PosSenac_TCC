@@ -24,4 +24,7 @@
     <string name="inventarioDetalhesDialogoEditarLocalTitulo">Editar Local</string>
     <string name="dialogoExclusaoInventario">Excluir este Inventário excluirá todos os dados associados a ele (Locais, Itens e Categorias). Prosseguir?</string>
     <string name="dialogoExclusaoLocal">Excluir este Local apagará as associações dos respectivos Itens com ele. Os Itens não serão excluídos, mas você terá que associá-los com novos Locais, se desejar. Prosseguir?</string>
+    <string name="dialogoExclusaoCategoria">Excluir esta categoria excluirá as associações entre ela e os respectivos itens. Os itens não serão excluídos. Prosseguir?</string>
+    <string name="inventarioDetalhesDialogoEditarCategoriaTitulo">Editar Categoria</string>
+    <string name="inventarioDetalhesDialogoNovaCategoriaTitulo">Nova Categoria</string>
 </resources>

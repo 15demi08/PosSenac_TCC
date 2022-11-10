@@ -2,11 +2,10 @@ package com.demetriusjr.mystuff.fragmentos
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.Toast
-import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.demetriusjr.mystuff.R
@@ -17,7 +16,7 @@ import com.demetriusjr.mystuff.fragmentos.dialogos.DialogoLocal
 import com.demetriusjr.mystuff.fragmentos.utilidades.LocaisAdapter
 import com.demetriusjr.mystuff.viewModels.MyStuffViewModel
 
-open class FragmentoInventarioDetalhesLocais(private val viewModel:MyStuffViewModel):LocaisAdapter.LACL, PopupMenu.OnMenuItemClickListener,  Fragment() {
+open class FragmentoInventarioDetalhesLocais(private val viewModel:MyStuffViewModel):LocaisAdapter.LACL, Fragment() {
 
     private lateinit var _b:FragmentoInventarioDetalhesLocaisBinding
     private val b get() = _b
@@ -36,13 +35,14 @@ open class FragmentoInventarioDetalhesLocais(private val viewModel:MyStuffViewMo
         b.apply {
 
             btnNovoItemLista.setOnClickListener {
-                viewModel.objetoSelecionadoOpcoes = null
+                viewModel.localSelecionado = null
                 dialogoLocal()
             }
             rclvLista.apply {
                 layoutManager = LinearLayoutManager(this@FragmentoInventarioDetalhesLocais.requireContext())
                 adapter = LocaisAdapter(this@FragmentoInventarioDetalhesLocais)
             }
+            txtvNenhumItemLista.text = getText(R.string.inventariosDetalhesLocaisNenhumMsg)
 
         }
 
@@ -58,28 +58,27 @@ open class FragmentoInventarioDetalhesLocais(private val viewModel:MyStuffViewMo
 
     }
 
-    override fun onClick(local:Local) = mostrarToast()
+    override fun onClick(obj:Local) = mostrarToast()
 
-    override fun onMenuClick(v:View, local:Local) {
-        viewModel.objetoSelecionadoOpcoes = local
-        PopupMenu(requireContext(), v).apply {
-            setOnMenuItemClickListener(this@FragmentoInventarioDetalhesLocais)
-            setOnDismissListener { viewModel.objetoSelecionadoOpcoes = null }
-            inflate(R.menu.item_opcoes)
-            show()
+    override fun onBtnClick(v:View, obj:Local) {
+        viewModel.localSelecionado = obj
+        when ((v as ImageButton).id) {
+            R.id.btnEditar -> dialogoLocal()
+            R.id.btnExcluir -> DialogoConfirmarExclusao(
+                viewModel,
+                R.string.dialogoExclusaoLocal,
+                DialogoConfirmarExclusao.LOCAL
+            ).show(parentFragmentManager, "excluirLocal")
         }
-    }
-
-    override fun onMenuItemClick(item:MenuItem):Boolean {
-        when (item.itemId) {
-            R.id.menuOpcaoEditar -> dialogoLocal()
-            R.id.menuOpcaoExcluir -> DialogoConfirmarExclusao(viewModel, R.string.dialogoExclusaoLocal).show(parentFragmentManager, "confirmarExlusao")
-        }
-        return false
     }
 
     private fun dialogoLocal() = DialogoLocal(viewModel, layoutInflater).show(parentFragmentManager, "novoLocal")
 
     private fun mostrarToast() = Toast.makeText(context, R.string.toastNaoImplementado, Toast.LENGTH_SHORT).show()
+
+    companion object {
+        @JvmStatic
+        fun newInstance(vm:MyStuffViewModel) = FragmentoInventarioDetalhesLocais(vm)
+    }
 
 }

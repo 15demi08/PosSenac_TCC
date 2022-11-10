@@ -1,7 +1,6 @@
 package com.demetriusjr.mystuff.fragmentos.dialogos
 
 import android.app.Dialog
-import android.content.DialogInterface
 import android.content.DialogInterface.OnClickListener
 import android.os.Bundle
 import android.view.View
@@ -39,10 +38,5 @@ open class Dialogo(val viewModel:MyStuffViewModel):DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState:Bundle?):Dialog = builder.create()
-
-    override fun onDismiss(dialog:DialogInterface) {
-        super.onDismiss(dialog)
-        viewModel.objetoSelecionadoOpcoes = null
-    }
 
 }

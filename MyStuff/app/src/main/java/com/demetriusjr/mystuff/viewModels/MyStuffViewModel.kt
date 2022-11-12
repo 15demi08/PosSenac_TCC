@@ -18,6 +18,10 @@ class MyStuffViewModel(private val repositorio:Repositorio):ViewModel() {
     var categoriaSelecionada:Categoria? = null
     fun categorias(idInventario:Long):LiveData<List<Categoria>> = repositorio.categorias(idInventario).asLiveData()
 
+    // Item
+    var itemSelecionado:ItemComLocalCategorias? = null
+    fun itens(idInventario:Long):LiveData<List<ItemComLocalCategorias>> = repositorio.itensPorInventario(idInventario).asLiveData()
+
     fun inserir(obj:Any) {
         when(obj){
             is Inventario -> viewModelScope.launch { repositorio.inserir(obj) }

@@ -8,6 +8,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.demetriusjr.mystuff.MainActivity
 import com.demetriusjr.mystuff.R
 import com.demetriusjr.mystuff.databinding.FragmentoInventarioDetalhesLocaisBinding
 import com.demetriusjr.mystuff.db.Categoria
@@ -34,22 +35,17 @@ class FragmentoInventarioDetalhesCategorias(private val viewModel:MyStuffViewMod
 
         b.apply {
 
-            btnNovoItemLista.setOnClickListener {
-                viewModel.categoriaSelecionada = null
-                dialogoCategoria()
-            }
             rclvLista.apply {
                 layoutManager = LinearLayoutManager(this@FragmentoInventarioDetalhesCategorias.requireContext())
                 adapter = CategoriasAdapter(this@FragmentoInventarioDetalhesCategorias)
             }
-            txtvNenhumItemLista.text = getText(R.string.inventariosDetalhesCategoriasNenhumMsg)
+            txtvNenhumItemLista.text = getText(R.string.msgNenhumCategoria)
 
         }
 
         viewModel.categorias(viewModel.inventarioSelecionado!!.idInventario).observe(viewLifecycleOwner) { lista ->
 
             (if (lista.isEmpty()) View.VISIBLE else View.GONE).let { visibilidade ->
-                b.setaLista.visibility = visibilidade
                 b.txtvNenhumItemLista.visibility = visibilidade
             }
             (b.rclvLista.adapter as CategoriasAdapter).submitList(lista)
@@ -58,21 +54,21 @@ class FragmentoInventarioDetalhesCategorias(private val viewModel:MyStuffViewMod
 
     }
 
-    override fun onClick(obj:Categoria) = mostrarToast()
+    override fun onClick(v:View, obj:Categoria) {
+        // Por implementar
+    }
 
     override fun onBtnClick(v:View, obj:Categoria) {
         viewModel.categoriaSelecionada = obj
         when ((v as ImageButton).id) {
-            R.id.btnEditar -> dialogoCategoria()
+            R.id.btnEditar -> DialogoCategoria(viewModel, layoutInflater).show(parentFragmentManager, "editarCategoria")
             R.id.btnExcluir -> DialogoConfirmarExclusao(
                 viewModel,
-                R.string.dialogoExclusaoCategoria,
+                R.string.msgExclusaoCategoria,
                 DialogoConfirmarExclusao.CATEGORIA
             ).show(parentFragmentManager, "excluirCategoria")
         }
     }
-
-    private fun dialogoCategoria() = DialogoCategoria(viewModel, layoutInflater).show(parentFragmentManager, "novaCategoria")
 
     private fun mostrarToast() = Toast.makeText(context, R.string.toastNaoImplementado, Toast.LENGTH_SHORT).show()
 

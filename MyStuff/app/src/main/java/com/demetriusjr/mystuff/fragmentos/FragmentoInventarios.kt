@@ -69,7 +69,7 @@ class FragmentoInventarios:InventariosAdapter.IACL, Fragment() {
 
     fun dialogoInventario() = DialogoInventario(viewModel, layoutInflater).show(parentFragmentManager, "dialogoInventario")
 
-    override fun onClick(obj:Inventario) { // Item da Lista
+    override fun onClick(v:View, obj:Inventario) { // Item da Lista
         viewModel.inventarioSelecionado = obj
         findNavController().navigate(R.id.action_fragmentoInventarios_to_fragmentoInventarioDetalhes)
     }
@@ -80,7 +80,7 @@ class FragmentoInventarios:InventariosAdapter.IACL, Fragment() {
             R.id.btnEditar -> dialogoInventario()
             R.id.btnExcluir -> DialogoConfirmarExclusao(
                 viewModel,
-                R.string.dialogoExclusaoInventario,
+                R.string.msgExclusaoInventario,
                 DialogoConfirmarExclusao.INVENTARIO
             ).show(parentFragmentManager, "excluirInventario")
         }

@@ -1,6 +1,7 @@
 package com.demetriusjr.mystuff
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -9,6 +10,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.demetriusjr.mystuff.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity:AppCompatActivity() {
 
@@ -32,4 +34,7 @@ class MainActivity:AppCompatActivity() {
         val navController = findNavController(R.id.navHost)
         return navController.navigateUp(abc) || super.onSupportNavigateUp()
     }
+
+    fun mostrarSnackbar(view:View, idString:Int) = Snackbar.make(view, idString, Snackbar.LENGTH_SHORT).show()
+
 }

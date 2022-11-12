@@ -18,7 +18,7 @@ class DialogoCategoria(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dial
 
         if(viewModel.categoriaSelecionada == null){
 
-            idTitulo = R.string.inventarioDetalhesDialogoNovaCategoriaTitulo
+            idTitulo = R.string.dialogoCategoriaNovaTitulo
 
             positivoClickListener = DialogInterface.OnClickListener { _,_ ->
                 viewModel.inserir(Categoria(
@@ -30,7 +30,7 @@ class DialogoCategoria(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dial
 
         } else {
 
-            idTitulo = R.string.inventarioDetalhesDialogoEditarCategoriaTitulo
+            idTitulo = R.string.dialogoCategoriaEditarTitulo
 
             dialogoBinding.txteNome.setText((viewModel.categoriaSelecionada!!.nome))
 

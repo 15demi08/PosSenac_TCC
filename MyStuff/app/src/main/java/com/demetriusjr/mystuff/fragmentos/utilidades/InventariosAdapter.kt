@@ -1,11 +1,13 @@
 package com.demetriusjr.mystuff.fragmentos.utilidades
 
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.demetriusjr.mystuff.R
 import com.demetriusjr.mystuff.databinding.ItemListaBinding
 import com.demetriusjr.mystuff.db.Inventario
 
@@ -14,6 +16,7 @@ class InventariosAdapter(val cl:IACL):ListAdapter<Inventario, InventariosAdapter
     // InventariosAdapterViewHolder
     class IAVH(layout:ItemListaBinding):RecyclerView.ViewHolder(layout.root)
 
+    // InventariosAdapterClickListener
     interface IACL:BACL<Inventario>
 
     class InventariosComparator:DiffUtil.ItemCallback<Inventario>() {
@@ -26,11 +29,12 @@ class InventariosAdapter(val cl:IACL):ListAdapter<Inventario, InventariosAdapter
 
     override fun onBindViewHolder(holder:IAVH, position:Int) {
         ItemListaBinding.bind(holder.itemView).apply {
-            getItem(position).apply {
-                txtvUmaLinhaNome.text = this.nome
-                itemContainer.setOnClickListener { cl.onClick(this) }
-                btnEditar.setOnClickListener { cl.onBtnClick(it, this) }
-                btnExcluir.setOnClickListener { cl.onBtnClick(it, this) }
+            getItem(position).let { inventario ->
+                itemListaIcone.setImageResource(R.drawable.ic_round_inventario)
+                txtvUmaLinhaNome.text = inventario.nome
+                itemContainer.setOnClickListener { cl.onClick(it, inventario) }
+                btnEditar.setOnClickListener { cl.onBtnClick(it, inventario) }
+                btnExcluir.setOnClickListener { cl.onBtnClick(it, inventario) }
             }
         }
     }

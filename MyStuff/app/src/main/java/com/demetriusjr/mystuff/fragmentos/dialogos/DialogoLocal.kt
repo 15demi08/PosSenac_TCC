@@ -18,7 +18,7 @@ class DialogoLocal(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dialogo(
 
         if(viewModel.localSelecionado == null){
 
-            idTitulo = R.string.inventarioDetalhesDialogoNovoLocalTitulo
+            idTitulo = R.string.dialogoLocalNovoTitulo
 
             positivoClickListener = DialogInterface.OnClickListener { _,_ ->
                 viewModel.inserir(Local(
@@ -30,7 +30,7 @@ class DialogoLocal(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dialogo(
 
         } else {
 
-            idTitulo = R.string.inventarioDetalhesDialogoEditarLocalTitulo
+            idTitulo = R.string.dialogoLocalEditarTitulo
 
             dialogoBinding.txteNome.setText(viewModel.localSelecionado!!.nome)
 

@@ -16,52 +16,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:itemCount="4"
-        tools:listitem="@layout/item_lista_duas_linhas" />
+        tools:listitem="@layout/item_lista" />
 
     <TextView
         android:id="@+id/txtvNenhumItemLista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-24dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="32dp"
         android:inputType="none"
+        android:lineSpacingExtra="8sp"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="?attr/colorPrimary"
+        android:textSize="18sp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/setaLista"
-        app:layout_constraintEnd_toStartOf="@+id/setaLista"
-        app:layout_constraintTop_toTopOf="@+id/setaLista"
-        tools:text="@string/inventariosDetalhesLocaisNenhumMsg" />
-
-    <ImageView
-        android:id="@+id/setaLista"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="-4dp"
-        android:layout_marginBottom="8dp"
-        android:rotation="90"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        android:src="@drawable/ic_round_shortcut_24"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/btnNovoItemLista"
-        app:layout_constraintEnd_toEndOf="@+id/btnNovoItemLista"
-        app:layout_constraintStart_toStartOf="@+id/btnNovoItemLista"
-        app:tint="?attr/colorPrimary" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnNovoItemLista"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        android:clickable="true"
-        android:contentDescription="@string/inventariosFAB"
-        android:focusable="true"
-        android:src="@drawable/ic_round_add_24"
-        app:fabSize="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rclvLista"
+        tools:text="@string/msgLocalNenhum"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

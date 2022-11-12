@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtiNome"
@@ -12,10 +12,11 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        android:hint="Nome"
+        android:hint="@string/dialogoDicaNome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/ic_round_nome">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txteNome"
@@ -33,7 +34,10 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtiNome">
 
@@ -41,21 +45,19 @@
             android:id="@+id/btnDiminuirQuantidade"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:background="@color/primaryColor"
-            android:padding="8dp"
+            android:contentDescription="@string/dialogoItemDiminuirQuantidade"
             app:layout_constraintBottom_toBottomOf="@+id/txtiQuantidade"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/txtiQuantidade"
             app:srcCompat="@drawable/ic_round_remove_24"
-            app:tint="@color/secondaryTextColor" />
+            app:tint="@color/preto50" />
 
         <ImageButton
             android:id="@+id/btnAumentarQuantidade"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:background="@color/primaryColor"
-            android:padding="8dp"
-            android:tint="@color/secondaryTextColor"
+            android:contentDescription="@string/dialogoItemAumentarQuantidade"
+            android:tint="@color/preto50"
             app:layout_constraintBottom_toBottomOf="@+id/txtiQuantidade"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/txtiQuantidade"
@@ -67,10 +69,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:hint="Quantidade"
+            android:hint="@string/dialogoDicaQuantidade"
             app:layout_constraintEnd_toStartOf="@+id/btnAumentarQuantidade"
             app:layout_constraintStart_toEndOf="@+id/btnDiminuirQuantidade"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconDrawable="@drawable/ic_round_quantidade">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txteQuantidade"
@@ -80,45 +83,98 @@
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtiLocal"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/txtvEtiquetaLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:drawableStart="@drawable/ic_round_local"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:text="@string/dialogoItemEtiquetaLocal"
+            android:textSize="16sp"
+            app:drawableTint="@color/preto50"
+            app:layout_constraintBottom_toBottomOf="@+id/btnEscolherLocal"
+            app:layout_constraintStart_toEndOf="@+id/btnEscolherLocal"
+            app:layout_constraintTop_toTopOf="@+id/btnEscolherLocal"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/btnEscolherLocal"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:hint="Local"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/dialogoItemEscolher"
+            android:textColor="@color/secondaryTextColor"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtiQuantidade">
+            app:layout_constraintTop_toBottomOf="@+id/txtiQuantidade" />
 
-            <AutoCompleteTextView
-                android:id="@+id/actvLocal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:inputType="none"
-                android:padding="16dp"
-                android:textSize="16sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <ImageButton
+            android:id="@+id/btnRemoverLocalSelecionado"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="?attr/selectableItemBackground"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:tint="@color/vermelhoPrimario"
+            app:layout_constraintBottom_toBottomOf="@+id/btnEscolherLocal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnEscolherLocal"
+            app:srcCompat="@drawable/ic_round_delete_24" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtiCategoria"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/txtvEtiquetaCategorias"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:drawableStart="@drawable/ic_round_tag"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:text="@string/dialogoItemEtiquetaCategorias"
+            android:textSize="16sp"
+            app:drawableTint="@color/preto50"
+            app:layout_constraintBottom_toBottomOf="@+id/btnEscolherCategorias"
+            app:layout_constraintStart_toEndOf="@+id/btnEscolherCategorias"
+            app:layout_constraintTop_toTopOf="@+id/btnEscolherCategorias" />
+
+        <Button
+            android:id="@+id/btnEscolherCategorias"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:hint="Categoria"
+            android:text="@string/dialogoItemEscolher"
+            android:textColor="@color/secondaryTextColor"
+            app:backgroundTint="@color/cinzaEscuroAzulado"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnEscolherLocal" />
+
+        <ImageButton
+            android:id="@+id/btnRemoverCategoriasSelecionadas"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="?attr/selectableItemBackground"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:tint="@color/vermelhoPrimario"
+            app:layout_constraintBottom_toBottomOf="@+id/btnEscolherCategorias"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnEscolherCategorias"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_round_delete_24" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rclvCategoriasSelecionadas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/borda"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtiLocal">
-
-            <AutoCompleteTextView
-                android:id="@+id/actvCategoria"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:inputType="none" />
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@+id/txtvEtiquetaCategorias"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_lista" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

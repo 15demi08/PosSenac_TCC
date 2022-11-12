@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.demetriusjr.mystuff.R
 import com.demetriusjr.mystuff.databinding.ItemListaBinding
 import com.demetriusjr.mystuff.db.Local
 
@@ -14,6 +15,7 @@ class LocaisAdapter(val cl:LACL):ListAdapter<Local, LocaisAdapter.LAVH>(ItemComp
     // LocaisAdapterViewHolder
     class LAVH(layout:ItemListaBinding):RecyclerView.ViewHolder(layout.root)
 
+    // LocaisAdapterClickListener
     interface LACL:BACL<Local>
 
     class ItemComparator:DiffUtil.ItemCallback<Local>() {
@@ -26,11 +28,11 @@ class LocaisAdapter(val cl:LACL):ListAdapter<Local, LocaisAdapter.LAVH>(ItemComp
 
     override fun onBindViewHolder(holder:LAVH, position:Int) {
         ItemListaBinding.bind(holder.itemView).apply {
-            getItem(position).apply {
-                txtvUmaLinhaNome.text = this.nome
-                itemContainer.setOnClickListener { cl.onClick(this) }
-                btnEditar.setOnClickListener { cl.onBtnClick(it, this) }
-                btnExcluir.setOnClickListener { cl.onBtnClick(it, this) }
+            getItem(position).let { local ->
+                itemListaIcone.setImageResource(R.drawable.ic_round_local)
+                txtvUmaLinhaNome.text = local.nome
+                btnEditar.setOnClickListener { cl.onBtnClick(it, local) }
+                btnExcluir.setOnClickListener { cl.onBtnClick(it, local) }
             }
         }
     }

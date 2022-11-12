@@ -32,11 +32,12 @@ class Repositorio(
     fun itensPorInventario(idInventario:Long):Flow<List<ItemComLocalCategorias>> = itemDAO.consultar(idInventario)
     fun itensPorLocal(idLocal:Long):Flow<List<ItemComCategorias>> = itemDAO.consultarPorLocal(idLocal)
     suspend fun inserir(item:Item) = itemDAO.inserir(item)
+    suspend fun inserir(item:Item, categorias:List<Categoria>) = itemDAO.inserir(item, categorias)
     suspend fun atualizar(item:Item) = itemDAO.atualizar(item)
     suspend fun excluir(item:Item) = itemDAO.excluir(item)
 
     // ItemCategoria
-    suspend fun inserir(itemCategoria:ItemCategoria) = itemCategoriaDAO.inserir(itemCategoria)
+    suspend fun inserir(vararg itemCategoria:ItemCategoria) = itemCategoriaDAO.inserir(*itemCategoria)
     suspend fun atualizar(itemCategoria:ItemCategoria) = itemCategoriaDAO.atualizar(itemCategoria)
     suspend fun excluir(itemCategoria:ItemCategoria) = itemCategoriaDAO.excluir(itemCategoria)
 

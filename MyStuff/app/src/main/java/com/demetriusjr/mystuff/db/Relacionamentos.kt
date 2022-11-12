@@ -20,11 +20,7 @@ data class ItemCategoria(
 )
 
 @Dao
-interface ItemCategoriaDAO {
-    @Insert suspend fun inserir(vararg itemCategoria:ItemCategoria)
-    @Update suspend fun atualizar(itemCategoria:ItemCategoria)
-    @Delete suspend fun excluir(itemCategoria:ItemCategoria)
-}
+interface ItemCategoriaDAO:DB.BaseDAO<ItemCategoria>
 
 data class CategoriaComItens(
     @Embedded val categoria:Categoria,

@@ -21,6 +21,12 @@ data class Item (
 @Dao
 interface ItemDAO:DB.BaseDAO<Item> {
 
+    // @Transaction
+    // @Insert
+    // suspend fun inserir(vararg objs:ItemComCategorias)
+    @Insert
+    suspend fun inserir(item:Item, categorias:List<Categoria>)
+
     // Todos os Items no Inventário
     @Transaction
     @Query("SELECT * FROM item WHERE idInventario = :idInventario")

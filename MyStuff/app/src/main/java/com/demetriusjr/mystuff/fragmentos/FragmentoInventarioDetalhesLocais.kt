@@ -34,22 +34,18 @@ open class FragmentoInventarioDetalhesLocais(private val viewModel:MyStuffViewMo
 
         b.apply {
 
-            btnNovoItemLista.setOnClickListener {
-                viewModel.localSelecionado = null
-                dialogoLocal()
-            }
+
             rclvLista.apply {
                 layoutManager = LinearLayoutManager(this@FragmentoInventarioDetalhesLocais.requireContext())
                 adapter = LocaisAdapter(this@FragmentoInventarioDetalhesLocais)
             }
-            txtvNenhumItemLista.text = getText(R.string.inventariosDetalhesLocaisNenhumMsg)
+            txtvNenhumItemLista.text = getText(R.string.msgLocalNenhum)
 
         }
 
         viewModel.locais(viewModel.inventarioSelecionado!!.idInventario).observe(viewLifecycleOwner) { lista ->
 
             (if (lista.isEmpty()) View.VISIBLE else View.GONE).let { visibilidade ->
-                b.setaLista.visibility = visibilidade
                 b.txtvNenhumItemLista.visibility = visibilidade
             }
             (b.rclvLista.adapter as LocaisAdapter).submitList(lista)
@@ -58,23 +54,22 @@ open class FragmentoInventarioDetalhesLocais(private val viewModel:MyStuffViewMo
 
     }
 
-    override fun onClick(obj:Local) = mostrarToast()
+    // Clique no item da lista
+    override fun onClick(v:View, obj:Local) {
+        // Por implementar
+    }
 
     override fun onBtnClick(v:View, obj:Local) {
         viewModel.localSelecionado = obj
         when ((v as ImageButton).id) {
-            R.id.btnEditar -> dialogoLocal()
+            R.id.btnEditar -> DialogoLocal(viewModel, layoutInflater).show(parentFragmentManager, "editarLocal")
             R.id.btnExcluir -> DialogoConfirmarExclusao(
                 viewModel,
-                R.string.dialogoExclusaoLocal,
+                R.string.msgExclusaoLocal,
                 DialogoConfirmarExclusao.LOCAL
             ).show(parentFragmentManager, "excluirLocal")
         }
     }
-
-    private fun dialogoLocal() = DialogoLocal(viewModel, layoutInflater).show(parentFragmentManager, "novoLocal")
-
-    private fun mostrarToast() = Toast.makeText(context, R.string.toastNaoImplementado, Toast.LENGTH_SHORT).show()
 
     companion object {
         @JvmStatic

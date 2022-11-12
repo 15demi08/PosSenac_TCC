@@ -18,7 +18,7 @@ class DialogoInventario(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dia
 
         if(viewModel.inventarioSelecionado == null){
 
-            idTitulo = R.string.inventariosDialogoNovoInvTitulo
+            idTitulo = R.string.dialogoInventarioNovoTitulo
 
             positivoClickListener = DialogInterface.OnClickListener { _,_ ->
                 viewModel.inserir(Inventario(0, dialogoBinding.txteNome.text.toString()))
@@ -26,7 +26,7 @@ class DialogoInventario(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dia
 
         } else {
 
-            idTitulo = R.string.inventariosDialogoEditarInvTitulo
+            idTitulo = R.string.dialogoInventarioEditarTitulo
 
             dialogoBinding.txteNome.setText(viewModel.inventarioSelecionado!!.nome)
 

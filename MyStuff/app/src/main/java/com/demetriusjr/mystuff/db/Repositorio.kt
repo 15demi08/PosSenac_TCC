@@ -18,12 +18,14 @@ class Repositorio(
 
     // Local
     fun locais(idInventario:Long):Flow<List<Local>> = localDAO.consultar(idInventario)
+    fun quantidadeLocais(idInventario:Long):Flow<Int> = localDAO.quantidadeLocais(idInventario)
     suspend fun inserir(local:Local) = localDAO.inserir(local)
     suspend fun atualizar(local:Local) = localDAO.atualizar(local)
     suspend fun excluir(local:Local) = localDAO.excluir(local)
 
     // Categoria
     fun categorias(idInventario:Long):Flow<List<Categoria>> = categoriaDAO.consultar(idInventario)
+    fun quantidadeCategorias(idInventario:Long):Flow<Int> = categoriaDAO.quantidadeCategorias(idInventario)
     suspend fun inserir(categoria:Categoria) = categoriaDAO.inserir(categoria)
     suspend fun atualizar(categoria:Categoria) = categoriaDAO.atualizar(categoria)
     suspend fun excluir(categoria:Categoria) = categoriaDAO.excluir(categoria)
@@ -32,13 +34,13 @@ class Repositorio(
     fun itensPorInventario(idInventario:Long):Flow<List<ItemComLocalCategorias>> = itemDAO.consultar(idInventario)
     fun itensPorLocal(idLocal:Long):Flow<List<ItemComCategorias>> = itemDAO.consultarPorLocal(idLocal)
     suspend fun inserir(item:Item) = itemDAO.inserir(item)
-    suspend fun inserir(item:Item, categorias:List<Categoria>) = itemDAO.inserir(item, categorias)
     suspend fun atualizar(item:Item) = itemDAO.atualizar(item)
     suspend fun excluir(item:Item) = itemDAO.excluir(item)
 
     // ItemCategoria
-    suspend fun inserir(vararg itemCategoria:ItemCategoria) = itemCategoriaDAO.inserir(*itemCategoria)
+    suspend fun inserirVarios(vararg itemCategoria:ItemCategoria) = itemCategoriaDAO.inserir(*itemCategoria)
     suspend fun atualizar(itemCategoria:ItemCategoria) = itemCategoriaDAO.atualizar(itemCategoria)
     suspend fun excluir(itemCategoria:ItemCategoria) = itemCategoriaDAO.excluir(itemCategoria)
+    suspend fun excluirRelacoesDoItem(idItem:Long) = itemCategoriaDAO.excluirRelacoesDoItem(idItem)
 
 }

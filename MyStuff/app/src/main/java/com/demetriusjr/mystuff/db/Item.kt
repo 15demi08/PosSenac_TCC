@@ -10,31 +10,25 @@ import kotlinx.coroutines.flow.Flow
         ForeignKey(entity = Inventario::class, parentColumns = ["idInventario"], childColumns = ["idInventario"], onDelete = CASCADE)
     ]
 )
-data class Item (
+data class Item(
     @PrimaryKey(autoGenerate = true) val idItem:Long,
     val nome:String?,
-    val quantidade:Long,
+    val quantidade:Int,
     val idInventario:Long,
     val idLocal:Long?
 )
 
 @Dao
-interface ItemDAO:DB.BaseDAO<Item> {
-
-    // @Transaction
-    // @Insert
-    // suspend fun inserir(vararg objs:ItemComCategorias)
-    @Insert
-    suspend fun inserir(item:Item, categorias:List<Categoria>)
+abstract class ItemDAO:DB.BaseDAO<Item>{
 
     // Todos os Items no Inventário
     @Transaction
     @Query("SELECT * FROM item WHERE idInventario = :idInventario")
-    fun consultar(idInventario:Long):Flow<List<ItemComLocalCategorias>>
+    abstract fun consultar(idInventario:Long):Flow<List<ItemComLocalCategorias>>
 
     // Items de Um Local
     @Transaction
     @Query("SELECT * FROM item WHERE idLocal = :idLocal")
-    fun consultarPorLocal(idLocal:Long):Flow<List<ItemComCategorias>>
+    abstract fun consultarPorLocal(idLocal:Long):Flow<List<ItemComCategorias>>
 
 }

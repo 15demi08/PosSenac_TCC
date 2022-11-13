@@ -21,4 +21,7 @@ interface LocalDAO:DB.BaseDAO<Local> {
     @Query("SELECT * FROM local WHERE idInventario = :idInventario ORDER BY nome ASC")
     fun consultar(idInventario:Long):Flow<List<Local>>
 
+    @Query("SELECT COUNT(idLocal) FROM local WHERE idInventario = :idInventario")
+    fun quantidadeLocais(idInventario:Long):Flow<Int>
+
 }

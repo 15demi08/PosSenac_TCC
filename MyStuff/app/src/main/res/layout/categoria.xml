@@ -22,7 +22,6 @@
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:layout_marginStart="6dp"
-            android:rotation="90"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

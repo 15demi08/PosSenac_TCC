@@ -16,6 +16,7 @@ open class Dialogo(val viewModel:MyStuffViewModel):DialogFragment() {
     private lateinit var builder:AlertDialog.Builder
 
     protected var idTitulo:Int = 0
+    protected var idIcone:Int = 0
 
     protected var visibilidadeCamposAdicionais:Int = View.VISIBLE
 
@@ -31,6 +32,7 @@ open class Dialogo(val viewModel:MyStuffViewModel):DialogFragment() {
 
         builder = AlertDialog.Builder(requireActivity())
             .setTitle(idTitulo)
+            .setIcon(idIcone)
             .setView(dialogoBinding.root)
             .setPositiveButton(R.string.btnSalvar, positivoClickListener)
             .setNeutralButton(idNeutro, neutroClickListener)

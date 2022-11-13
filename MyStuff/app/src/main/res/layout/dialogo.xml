@@ -32,14 +32,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtiNome">
+        app:layout_constraintTop_toBottomOf="@+id/txtiNome"
+        app:layout_constraintVertical_bias="0.0">
 
         <ImageButton
             android:id="@+id/btnDiminuirQuantidade"
@@ -87,7 +88,6 @@
             android:id="@+id/txtvEtiquetaLocal"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginStart="8dp"
             android:drawableStart="@drawable/ic_round_local"
             android:drawablePadding="4dp"
             android:gravity="center"
@@ -95,7 +95,7 @@
             android:textSize="16sp"
             app:drawableTint="@color/preto50"
             app:layout_constraintBottom_toBottomOf="@+id/btnEscolherLocal"
-            app:layout_constraintStart_toEndOf="@+id/btnEscolherLocal"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/btnEscolherLocal"
             app:layout_constraintVertical_bias="0.0" />
 
@@ -104,11 +104,11 @@
             style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:text="@string/dialogoItemEscolher"
             android:textColor="@color/secondaryTextColor"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtiQuantidade" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAumentarQuantidade" />
 
         <ImageButton
             android:id="@+id/btnRemoverLocalSelecionado"
@@ -118,16 +118,17 @@
             android:minWidth="48dp"
             android:minHeight="48dp"
             android:tint="@color/vermelhoPrimario"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/btnEscolherLocal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/btnEscolherLocal"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_round_delete_24" />
 
         <TextView
             android:id="@+id/txtvEtiquetaCategorias"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginStart="8dp"
             android:drawableStart="@drawable/ic_round_tag"
             android:drawablePadding="4dp"
             android:gravity="center"
@@ -135,7 +136,7 @@
             android:textSize="16sp"
             app:drawableTint="@color/preto50"
             app:layout_constraintBottom_toBottomOf="@+id/btnEscolherCategorias"
-            app:layout_constraintStart_toEndOf="@+id/btnEscolherCategorias"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/btnEscolherCategorias" />
 
         <Button
@@ -143,11 +144,11 @@
             style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:text="@string/dialogoItemEscolher"
             android:textColor="@color/secondaryTextColor"
             app:backgroundTint="@color/cinzaEscuroAzulado"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnEscolherLocal" />
 
         <ImageButton
@@ -158,23 +159,29 @@
             android:minWidth="48dp"
             android:minHeight="48dp"
             android:tint="@color/vermelhoPrimario"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/btnEscolherCategorias"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnEscolherCategorias"
             app:layout_constraintTop_toTopOf="@+id/btnEscolherCategorias"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_round_delete_24" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rclvCategoriasSelecionadas"
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flowCategoriasSelecionadas"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:background="@drawable/borda"
+            android:orientation="horizontal"
+            app:flow_horizontalAlign="start"
+            app:flow_horizontalBias="-1"
+            app:flow_horizontalGap="8dp"
+            app:flow_horizontalStyle="packed"
+            app:flow_verticalAlign="top"
+            app:flow_verticalGap="8dp"
+            app:flow_wrapMode="chain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtvEtiquetaCategorias"
-            tools:itemCount="2"
-            tools:listitem="@layout/item_lista" />
+            app:layout_constraintTop_toBottomOf="@+id/txtvEtiquetaCategorias" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

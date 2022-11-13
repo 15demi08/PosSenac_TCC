@@ -13,9 +13,9 @@ class InventarioDetalhesPaginasAdapter(f:Fragment, private val vm:MyStuffViewMod
 
     override fun createFragment(position:Int):Fragment {
         return when (position) {
-            0 -> FragmentoInventarioDetalhesLocais(vm)
-            1 -> FragmentoInventarioDetalhesCategorias(vm)
-            else -> FragmentoInventarioDetalhesItens(vm) // Gambiarra
+            0 -> FragmentoInventarioDetalhesLocais()
+            1 -> FragmentoInventarioDetalhesCategorias()
+            else -> FragmentoInventarioDetalhesItens() // Gambiarra
         }
     }
 

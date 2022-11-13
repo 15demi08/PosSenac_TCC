@@ -14,6 +14,8 @@ class DialogoLocal(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dialogo(
 
         dialogoBinding = DialogoBinding.inflate(inflater)
 
+        idIcone = R.drawable.ic_round_local
+
         visibilidadeCamposAdicionais = View.GONE
 
         if(viewModel.localSelecionado == null){

@@ -38,4 +38,7 @@
     <string name="dialogoItemDiminuirQuantidade">Decrease Item quantity</string>
     <string name="dialogoDicaNome">Name</string>
     <string name="dialogoDicaQuantidade">Quantidade</string>
+    <string name="dialogoListaLocaisTitulo">Choose a Location</string>
+    <string name="dialogoListaCategoriaTitulo">Choose one or more Categories</string>
+    <string name="msgItemNenhumOutroSnack">First create a Location and a Category.</string>
 </resources>

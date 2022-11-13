@@ -6,9 +6,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.demetriusjr.mystuff.R
-import com.demetriusjr.mystuff.db.Categoria
-import com.demetriusjr.mystuff.db.Inventario
-import com.demetriusjr.mystuff.db.Local
 import com.demetriusjr.mystuff.viewModels.MyStuffViewModel
 
 class DialogoConfirmarExclusao(val viewModel:MyStuffViewModel, val msg:Int, val codDialogo:Int):DialogFragment() {
@@ -35,6 +32,7 @@ class DialogoConfirmarExclusao(val viewModel:MyStuffViewModel, val msg:Int, val 
                         INVENTARIO -> excluir(inventarioSelecionado!!)
                         LOCAL -> excluir(localSelecionado!!)
                         CATEGORIA -> excluir(categoriaSelecionada!!)
+                        ITEM -> excluir(itemSelecionado!!)
                     }
                 }
             })
@@ -53,6 +51,7 @@ class DialogoConfirmarExclusao(val viewModel:MyStuffViewModel, val msg:Int, val 
                 INVENTARIO -> inventarioSelecionado = null
                 LOCAL -> localSelecionado = null
                 CATEGORIA -> categoriaSelecionada = null
+                ITEM -> itemSelecionado = null
             }
         }
     }

@@ -20,7 +20,15 @@ data class ItemCategoria(
 )
 
 @Dao
-interface ItemCategoriaDAO:DB.BaseDAO<ItemCategoria>
+interface ItemCategoriaDAO:DB.BaseDAO<ItemCategoria> {
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun inserir(vararg objs:ItemCategoria)
+
+    @Query("DELETE FROM ItemCategoria WHERE idItem = :idItem")
+    suspend fun excluirRelacoesDoItem(idItem:Long)
+
+}
 
 data class CategoriaComItens(
     @Embedded val categoria:Categoria,

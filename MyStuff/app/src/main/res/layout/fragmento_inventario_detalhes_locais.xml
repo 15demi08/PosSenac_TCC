@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:itemCount="4"
-        tools:listitem="@layout/item_lista" />
+        tools:listitem="@layout/item_lista_item" />
 
     <TextView
         android:id="@+id/txtvNenhumItemLista"

@@ -14,6 +14,8 @@ class DialogoCategoria(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dial
 
         dialogoBinding = DialogoBinding.inflate(inflater)
 
+        idIcone = R.drawable.ic_round_tag
+
         visibilidadeCamposAdicionais = View.GONE
 
         if(viewModel.categoriaSelecionada == null){

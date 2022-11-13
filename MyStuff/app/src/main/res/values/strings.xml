@@ -38,4 +38,9 @@
     <string name="dialogoItemDiminuirQuantidade">Diminuir quantidade do Item</string>
     <string name="dialogoDicaNome">Nome</string>
     <string name="dialogoDicaQuantidade">Quantidade</string>
+    <string name="dialogoItemQuantidadePlaceholder" translatable="false">%1$d</string>
+    <string name="dialogoListaLocaisTitulo">Escolha um Local</string>
+    <string name="dialogoListaCategoriaTitulo">Escolha uma ou mais Categorias</string>
+    <string name="msgItemNenhumOutroSnack">Antes crie ao menos um Local e uma Categoria.</string>
+    <string name="inventarioDetalhesItensX" translatable="false"> x </string>
 </resources>

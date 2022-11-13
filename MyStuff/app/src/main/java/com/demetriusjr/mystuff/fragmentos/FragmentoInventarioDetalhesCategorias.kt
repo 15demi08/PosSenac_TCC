@@ -5,10 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.demetriusjr.mystuff.MainActivity
 import com.demetriusjr.mystuff.R
 import com.demetriusjr.mystuff.databinding.FragmentoInventarioDetalhesLocaisBinding
 import com.demetriusjr.mystuff.db.Categoria
@@ -17,10 +16,12 @@ import com.demetriusjr.mystuff.fragmentos.dialogos.DialogoConfirmarExclusao
 import com.demetriusjr.mystuff.fragmentos.utilidades.CategoriasAdapter
 import com.demetriusjr.mystuff.viewModels.MyStuffViewModel
 
-class FragmentoInventarioDetalhesCategorias(private val viewModel:MyStuffViewModel):CategoriasAdapter.CACL, Fragment() {
+class FragmentoInventarioDetalhesCategorias():CategoriasAdapter.CACL, Fragment() {
 
     private lateinit var _b:FragmentoInventarioDetalhesLocaisBinding
     private val b get() = _b
+
+    private val viewModel:MyStuffViewModel by navGraphViewModels(R.id.navegacao)
 
     override fun onCreateView(
         inflater:LayoutInflater, container:ViewGroup?,
@@ -70,11 +71,9 @@ class FragmentoInventarioDetalhesCategorias(private val viewModel:MyStuffViewMod
         }
     }
 
-    private fun mostrarToast() = Toast.makeText(context, R.string.toastNaoImplementado, Toast.LENGTH_SHORT).show()
-
     companion object {
         @JvmStatic
-        fun newInstance(vm:MyStuffViewModel) = FragmentoInventarioDetalhesCategorias(vm)
+        fun newInstance() = FragmentoInventarioDetalhesCategorias()
     }
 
 }

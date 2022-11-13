@@ -2,7 +2,6 @@ package com.demetriusjr.mystuff.db
 
 import androidx.room.*
 import androidx.room.ForeignKey.CASCADE
-import androidx.room.ForeignKey.SET_NULL
 import kotlinx.coroutines.flow.Flow
 
 @Entity(
@@ -12,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 )
 data class Categoria(
     @PrimaryKey(autoGenerate = true) val idCategoria:Long,
-    val nome:String?,
+    val nome:String,
     val idInventario:Long
 )
 
@@ -21,6 +20,9 @@ interface CategoriaDAO:DB.BaseDAO<Categoria> {
 
     @Query("SELECT * FROM categoria WHERE idInventario = :idInventario ORDER BY nome ASC")
     fun consultar(idInventario:Long):Flow<List<Categoria>>
+
+    @Query("SELECT COUNT(idCategoria) FROM categoria WHERE idInventario = :idInventario")
+    fun quantidadeCategorias(idInventario:Long):Flow<Int>
 
     // @Transaction
     // @Query("SELECT * FROM categoria WHERE idCategoria = :idCategoria")

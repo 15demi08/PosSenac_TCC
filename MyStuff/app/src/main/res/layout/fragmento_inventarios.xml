@@ -64,33 +64,18 @@
         android:id="@+id/txtvNenhumInventario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-24dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="24dp"
         android:inputType="none"
         android:text="@string/msgInventarioNenhum"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="?attr/colorPrimary"
+        android:textSize="18sp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/setaInventarios"
-        app:layout_constraintEnd_toStartOf="@+id/setaInventarios"
-        app:layout_constraintTop_toTopOf="@+id/setaInventarios"
-        tools:text="@string/msgInventarioNenhum" />
-
-    <ImageView
-        android:id="@+id/setaInventarios"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="-4dp"
-        android:layout_marginBottom="8dp"
-        android:rotation="90"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        android:src="@drawable/ic_round_shortcut_24"
-        android:tint="?attr/colorPrimary"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/novoInventario"
-        app:layout_constraintEnd_toEndOf="@+id/novoInventario"
-        app:layout_constraintStart_toStartOf="@+id/novoInventario" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/containerTitulo"
+        tools:text="@string/msgInventarioNenhum"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

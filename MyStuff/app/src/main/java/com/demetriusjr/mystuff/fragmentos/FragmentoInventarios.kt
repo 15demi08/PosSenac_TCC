@@ -57,13 +57,8 @@ class FragmentoInventarios:InventariosAdapter.IACL, Fragment() {
         }
 
         viewModel.inventarios.observe(viewLifecycleOwner) { lista ->
-
-            (if (lista.isEmpty()) View.VISIBLE else View.GONE).let { visibilidade ->
-                b.setaInventarios.visibility = visibilidade
-                b.txtvNenhumInventario.visibility = visibilidade
-            }
+            b.txtvNenhumInventario.visibility = if (lista.isEmpty()) View.VISIBLE else View.GONE
             (b.rclvLista.adapter as InventariosAdapter).submitList(lista)
-
         }
     }
 

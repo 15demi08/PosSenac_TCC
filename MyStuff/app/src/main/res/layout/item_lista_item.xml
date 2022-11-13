@@ -13,25 +13,31 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
+        android:text="@string/dialogoDicaQuantidade"
         android:textColor="@color/primaryColor"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Nome do Item" />
+        tools:text="Quantidade" />
 
     <TextView
         android:id="@+id/txtvItemX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/inventarioDetalhesItensX"
         android:textColor="@color/primaryColor"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/txtvItemQuantidade"
         app:layout_constraintStart_toEndOf="@+id/txtvItemQuantidade"
-        app:layout_constraintTop_toTopOf="@+id/txtvItemQuantidade"
-        tools:text=" x " />
+        app:layout_constraintTop_toTopOf="@+id/txtvItemQuantidade" />
 
     <TextView
         android:id="@+id/txtvItemNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/txtvItemQuantidade"
         app:layout_constraintStart_toEndOf="@+id/txtvItemX"
         app:layout_constraintTop_toTopOf="@+id/txtvItemQuantidade"
@@ -43,39 +49,41 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:gravity="center"
+        android:text="@string/dialogoItemEtiquetaLocal"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/layoutLocal"
         app:layout_constraintEnd_toEndOf="@+id/txtvItemEtiquetaCategorias"
-        app:layout_constraintTop_toTopOf="@+id/layoutLocal"
-        tools:text="Local" />
+        app:layout_constraintTop_toTopOf="@+id/layoutLocal" />
+
+    <include
+        android:id="@+id/layoutLocal"
+        layout="@layout/local"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/txtvItemEtiquetaLocal"
+        app:layout_constraintTop_toBottomOf="@+id/txtvItemNome" />
 
     <TextView
         android:id="@+id/txtvItemEtiquetaCategorias"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="24dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:gravity="center_vertical"
+        android:text="@string/dialogoItemEtiquetaCategorias"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="90dp"
-        tools:text="Categoria" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txtvItemEtiquetaLocal"
+        tools:text="Categoria(s)" />
 
     <ImageButton
         android:id="@+id/btnItemExcluir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
+        android:contentDescription="@string/menuExcluir"
         android:minWidth="48dp"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/txtvItemNome"
@@ -89,6 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:background="?attr/selectableItemBackground"
+        android:contentDescription="@string/menuEditar"
         android:minWidth="48dp"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/btnItemExcluir"
@@ -97,31 +106,35 @@
         app:srcCompat="@drawable/ic_round_edit_24"
         app:tint="@color/preto50" />
 
-    <include
-        android:id="@+id/layoutLocal"
-        layout="@layout/local"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/txtvItemEtiquetaLocal"
-        app:layout_constraintTop_toBottomOf="@+id/txtvItemNome" />
-
     <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/categoriasContainer"
+        android:id="@+id/flowCategoriasContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:orientation="horizontal"
         app:flow_horizontalAlign="start"
+        app:flow_horizontalBias="-1"
         app:flow_horizontalGap="8dp"
-        app:flow_horizontalStyle="spread_inside"
+        app:flow_horizontalStyle="packed"
         app:flow_verticalAlign="top"
+        app:flow_verticalGap="8dp"
         app:flow_wrapMode="chain"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/layoutLocal"
-        app:layout_constraintTop_toTopOf="@+id/txtvItemEtiquetaCategorias"></androidx.constraintlayout.helper.widget.Flow>
+        app:layout_constraintTop_toBottomOf="@+id/layoutLocal"></androidx.constraintlayout.helper.widget.Flow>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.demetriusjr.mystuff.fragmentos.dialogos
 
 import android.content.DialogInterface
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import com.demetriusjr.mystuff.R
@@ -22,12 +23,18 @@ class DialogoLocal(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dialogo(
 
             idTitulo = R.string.dialogoLocalNovoTitulo
 
+            configurarCampoNome(" ")
+
             positivoClickListener = DialogInterface.OnClickListener { _,_ ->
-                viewModel.inserir(Local(
-                    0,
-                    dialogoBinding.txteNome.text.toString(),
-                    viewModel.inventarioSelecionado!!.idInventario
-                ))
+                if (validoNome.value!!) {
+                    viewModel.inserir(Local(
+                        0,
+                        dialogoBinding.txteNome.text.toString(),
+                        viewModel.inventarioSelecionado!!.idInventario
+                    ))
+                } else {
+                    mostrarSnackBar(R.string.msgNaoSalvoLocal)
+                }
             }
 
         } else {
@@ -37,8 +44,12 @@ class DialogoLocal(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dialogo(
             dialogoBinding.txteNome.setText(viewModel.localSelecionado!!.nome)
 
             positivoClickListener = DialogInterface.OnClickListener { _,_ ->
-                viewModel.apply {
-                    atualizar(localSelecionado!!.copy(nome = dialogoBinding.txteNome.text.toString()))
+                if (validoNome.value!!) {
+                    viewModel.apply {
+                        atualizar(localSelecionado!!.copy(nome = dialogoBinding.txteNome.text.toString()))
+                    }
+                } else {
+                    mostrarSnackBar(R.string.msgNaoAtualizadoLocal)
                 }
             }
 
@@ -46,6 +57,13 @@ class DialogoLocal(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dialogo(
 
         idNeutro = R.string.btnCancelar
 
+    }
+
+    override fun onCreate(savedInstanceState:Bundle?) {
+        super.onCreate(savedInstanceState)
+        if(viewModel.localSelecionado != null){
+            configurarCampoNome(viewModel.localSelecionado!!.nome)
+        }
     }
 
     override fun onDismiss(dialog:DialogInterface) {

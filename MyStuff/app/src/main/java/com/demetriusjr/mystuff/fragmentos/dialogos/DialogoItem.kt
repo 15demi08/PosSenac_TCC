@@ -38,7 +38,7 @@ class DialogoItem(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dialogo(v
                 val txt = txteQuantidade.text.toString()
                 if (txt != "") {
                     txt.toInt().let {
-                        if (it > 0) txteQuantidade.setText(numeroQuantidade(it - 1))
+                        if (it > 1) txteQuantidade.setText(numeroQuantidade(it - 1))
                     }
                 }
             }
@@ -65,19 +65,29 @@ class DialogoItem(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dialogo(v
 
             idTitulo = R.string.dialogoitemNovoTitulo
 
+            configurarCampoNome(" ")
+
             positivoClickListener = DialogInterface.OnClickListener { _, _ ->
-                viewModel.inserir(
-                    ItemComCategorias(
-                        Item(
-                            0,
-                            dialogoBinding.txteNome.text.toString(),
-                            dialogoBinding.txteQuantidade.text.toString().toInt(),
-                            viewModel.inventarioSelecionado!!.idInventario,
-                            localSelecionado.value?.idLocal
-                        ),
-                        categoriasSelecionadas.value!!
-                    )
-                )
+                if(validoNome.value!! && validoQuantidade.value!!) {
+                    if ( localSelecionado.value == null || ( categoriasSelecionadas.value == null || categoriasSelecionadas.value!!.isEmpty() ) ) {
+                        mostrarSnackBar(R.string.msgNaoSalvoItemOutros)
+                    } else {
+                        viewModel.inserir(
+                            ItemComCategorias(
+                                Item(
+                                    0,
+                                    dialogoBinding.txteNome.text.toString(),
+                                    dialogoBinding.txteQuantidade.text.toString().toInt(),
+                                    viewModel.inventarioSelecionado!!.idInventario,
+                                    localSelecionado.value?.idLocal
+                                ),
+                                categoriasSelecionadas.value!!
+                            )
+                        )
+                    }
+                } else {
+                    mostrarSnackBar(R.string.msgNaoSalvoItem)
+                }
             }
 
         } else {
@@ -89,23 +99,29 @@ class DialogoItem(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dialogo(v
                 localSelecionado.value = itemSelecionado.local
                 categoriasSelecionadas.value = itemSelecionado.categorias
 
-                dialogoBinding.apply {
-                    txteNome.setText(itemSelecionado.item.nome)
-                    txteQuantidade.setText(itemSelecionado.item.quantidade.toString())
-                }
+                // dialogoBinding.apply {
+                //     txteQuantidade.apply {
+                //         setText(0.toString())
+                //         setText(itemSelecionado.item.quantidade.toString())
+                //     }
+                // }
 
             }
 
-            positivoClickListener = DialogInterface.OnClickListener { _, _ ->
-                viewModel.apply {
-                    atualizar(ItemComCategorias(
-                        itemSelecionado!!.item.copy(
-                            nome = dialogoBinding.txteNome.text.toString(),
-                            quantidade = dialogoBinding.txteQuantidade.text.toString().toInt(),
-                            idLocal = this@DialogoItem.localSelecionado.value!!.idLocal
-                        ),
-                        categoriasSelecionadas.value!!
-                    ))
+            positivoClickListener = DialogInterface.OnClickListener { _,_ ->
+                if(validoNome.value!! && validoQuantidade.value!!){
+                    viewModel.apply {
+                        atualizar(ItemComCategorias(
+                            itemSelecionado!!.item.copy(
+                                nome = dialogoBinding.txteNome.text.toString(),
+                                quantidade = dialogoBinding.txteQuantidade.text.toString().toInt(),
+                                idLocal = this@DialogoItem.localSelecionado.value!!.idLocal
+                            ),
+                            categoriasSelecionadas.value!!
+                        ))
+                    }
+                } else {
+                    mostrarSnackBar(R.string.msgNaoAtualizadoItem)
                 }
             }
 
@@ -119,8 +135,26 @@ class DialogoItem(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dialogo(v
         return requireActivity().getString(R.string.dialogoItemQuantidadePlaceholder, i)
     }
 
+    private fun configurarCampoQuantidade(nro:Int){
+        dialogoBinding.txteQuantidade.apply {
+            setText(numeroQuantidade(nro))
+            setText(numeroQuantidade(0))
+            setText(numeroQuantidade(nro))
+        }
+    }
+
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if(viewModel.itemSelecionado != null){
+            configurarCampoNome(viewModel.itemSelecionado!!.item.nome)
+        }
+
+        dialogoBinding.txteQuantidade.addTextChangedListener(quantidadeChangeListener)
+        observarQuantidade()
+
+        if( viewModel.itemSelecionado != null)
+            configurarCampoQuantidade(viewModel.itemSelecionado!!.item.quantidade)
 
         viewModel.inventarioSelecionado!!.idInventario.let { idInv ->
             viewModel.locais(idInv).observe(this) { listaLocais = it }

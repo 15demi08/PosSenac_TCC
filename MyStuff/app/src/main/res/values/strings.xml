@@ -43,4 +43,15 @@
     <string name="dialogoListaCategoriaTitulo">Escolha uma ou mais Categorias</string>
     <string name="msgItemNenhumOutroSnack">Antes crie ao menos um Local e uma Categoria.</string>
     <string name="inventarioDetalhesItensX" translatable="false"> x </string>
+    <string name="msgNaoSalvoInventario">Inventário não salvo. Forneça um nome.</string>
+    <string name="msgNaoSalvoLocal">Local não salvo. Forneça um nome.</string>
+    <string name="msgNaoSalvoCategoria">Categoria não salva. Forneça um nome.</string>
+    <string name="msgNaoAtualizadoInventario">Inventário não renomeado. Forneça um nome.</string>
+    <string name="msgNaoAtualizadoCategoria">Categoria não renomeada. Forneça um nome.</string>
+    <string name="msgNaoAtualizadoItem">Item não modificado. Forneça um nome e quantidade.</string>
+    <string name="msgNaoAtualizadoLocal">Local não renomeado. Forneça um nome.</string>
+    <string name="msgDialogoNomeVazio">Não pode estar em branco</string>
+    <string name="msgDialogoQuantidadeVaziaOuZero">Deve ser 1 ou mais</string>
+    <string name="msgNaoSalvoItem">Item não salvo. Forneça um nome e quantidade.</string>
+    <string name="msgNaoSalvoItemOutros">Item não salvo. Forneça ao menos um Local e uma Categoria.</string>
 </resources>

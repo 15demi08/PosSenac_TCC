@@ -1,6 +1,7 @@
 package com.demetriusjr.mystuff.fragmentos.dialogos
 
 import android.content.DialogInterface
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import com.demetriusjr.mystuff.R
@@ -22,12 +23,18 @@ class DialogoCategoria(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dial
 
             idTitulo = R.string.dialogoCategoriaNovaTitulo
 
+            configurarCampoNome(" ")
+
             positivoClickListener = DialogInterface.OnClickListener { _,_ ->
-                viewModel.inserir(Categoria(
-                    0,
-                    dialogoBinding.txteNome.text.toString(),
-                    viewModel.inventarioSelecionado!!.idInventario
-                ))
+                if (validoNome.value!!) {
+                    viewModel.inserir(Categoria(
+                        0,
+                        dialogoBinding.txteNome.text.toString(),
+                        viewModel.inventarioSelecionado!!.idInventario
+                    ))
+                } else {
+                    mostrarSnackBar(R.string.msgNaoSalvoCategoria)
+                }
             }
 
         } else {
@@ -37,8 +44,12 @@ class DialogoCategoria(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dial
             dialogoBinding.txteNome.setText((viewModel.categoriaSelecionada!!.nome))
 
             positivoClickListener = DialogInterface.OnClickListener { _,_ ->
-                viewModel.apply {
-                    atualizar(categoriaSelecionada!!.copy(nome = dialogoBinding.txteNome.text.toString()))
+                if (validoNome.value!!) {
+                    viewModel.apply {
+                        atualizar(categoriaSelecionada!!.copy(nome = dialogoBinding.txteNome.text.toString()))
+                    }
+                } else {
+                    mostrarSnackBar(R.string.msgNaoAtualizadoCategoria)
                 }
             }
 
@@ -46,6 +57,13 @@ class DialogoCategoria(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dial
 
         idNeutro = R.string.btnCancelar
 
+    }
+
+    override fun onCreate(savedInstanceState:Bundle?) {
+        super.onCreate(savedInstanceState)
+        if(viewModel.categoriaSelecionada != null){
+            configurarCampoNome(viewModel.categoriaSelecionada!!.nome)
+        }
     }
 
     override fun onDismiss(dialog:DialogInterface) {

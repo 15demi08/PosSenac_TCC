@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
 )
 data class Item(
     @PrimaryKey(autoGenerate = true) val idItem:Long,
-    val nome:String?,
+    val nome:String,
     val quantidade:Int,
     val idInventario:Long,
     val idLocal:Long?

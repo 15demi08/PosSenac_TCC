@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 @Entity
 data class Inventario (
     @PrimaryKey(autoGenerate = true) val idInventario:Long,
-    val nome:String?
+    val nome:String
 )
 
 @Dao

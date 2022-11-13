@@ -1,6 +1,7 @@
 package com.demetriusjr.mystuff.fragmentos.dialogos
 
 import android.content.DialogInterface
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import com.demetriusjr.mystuff.R
@@ -14,25 +15,35 @@ class DialogoInventario(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dia
 
         dialogoBinding = DialogoBinding.inflate(inflater)
 
+        idIcone = R.drawable.ic_round_inventario
+
         visibilidadeCamposAdicionais = View.GONE
 
-        if(viewModel.inventarioSelecionado == null){
+        if (viewModel.inventarioSelecionado == null) {
 
             idTitulo = R.string.dialogoInventarioNovoTitulo
 
-            positivoClickListener = DialogInterface.OnClickListener { _,_ ->
-                viewModel.inserir(Inventario(0, dialogoBinding.txteNome.text.toString()))
+            configurarCampoNome(" ")
+
+            positivoClickListener = DialogInterface.OnClickListener { _, _ ->
+                if (validoNome.value!!) {
+                    viewModel.inserir(Inventario(0, dialogoBinding.txteNome.text.toString()))
+                } else {
+                    mostrarSnackBar(R.string.msgNaoSalvoInventario)
+                }
             }
 
         } else {
 
             idTitulo = R.string.dialogoInventarioEditarTitulo
 
-            dialogoBinding.txteNome.setText(viewModel.inventarioSelecionado!!.nome)
-
-            positivoClickListener = DialogInterface.OnClickListener { _,_ ->
-                viewModel.apply {
-                    atualizar(inventarioSelecionado!!.copy(nome = dialogoBinding.txteNome.text.toString()))
+            positivoClickListener = DialogInterface.OnClickListener { _, _ ->
+                if (validoNome.value!!) {
+                    viewModel.apply {
+                        atualizar(inventarioSelecionado!!.copy(nome = dialogoBinding.txteNome.text.toString()))
+                    }
+                } else {
+                    mostrarSnackBar(R.string.msgNaoAtualizadoInventario)
                 }
             }
 
@@ -40,6 +51,13 @@ class DialogoInventario(viewModel:MyStuffViewModel, inflater:LayoutInflater):Dia
 
         idNeutro = R.string.btnCancelar
 
+    }
+
+    override fun onCreate(savedInstanceState:Bundle?) {
+        super.onCreate(savedInstanceState)
+        if(viewModel.inventarioSelecionado != null){
+            configurarCampoNome(viewModel.inventarioSelecionado!!.nome)
+        }
     }
 
     override fun onDismiss(dialog:DialogInterface) {

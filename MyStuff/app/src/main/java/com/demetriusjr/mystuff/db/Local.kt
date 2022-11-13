@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 )
 data class Local (
     @PrimaryKey(autoGenerate = true) val idLocal:Long,
-    val nome:String?,
+    val nome:String,
     val idInventario:Long
 )
 

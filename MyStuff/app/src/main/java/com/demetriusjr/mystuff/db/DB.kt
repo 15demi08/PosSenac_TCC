@@ -3,7 +3,7 @@ package com.demetriusjr.mystuff.db
 import android.content.Context
 import androidx.room.*
 
-@Database(entities = [Inventario::class, Local::class, Categoria::class, Item::class, ItemCategoria::class], version = 5, exportSchema = false)
+@Database(entities = [Inventario::class, Local::class, Categoria::class, Item::class, ItemCategoria::class], version = 7, exportSchema = false)
 abstract class DB:RoomDatabase() {
 
     interface BaseDAO<T> {

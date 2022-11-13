@@ -41,4 +41,15 @@
     <string name="dialogoListaLocaisTitulo">Choose a Location</string>
     <string name="dialogoListaCategoriaTitulo">Choose one or more Categories</string>
     <string name="msgItemNenhumOutroSnack">First create a Location and a Category.</string>
+    <string name="msgNaoSalvoInventario">Inventory was not saved. Please provide a name.</string>
+    <string name="msgNaoSalvoLocal">Location was not saved. Please provide a name.</string>
+    <string name="msgNaoSalvoCategoria">Category was not saved. Please provide a name.</string>
+    <string name="msgNaoAtualizadoInventario">Inventory was not renamed. Please provide a name.</string>
+    <string name="msgNaoAtualizadoLocal">Location was not renamed. Please provide a name.</string>
+    <string name="msgNaoAtualizadoCategoria">Category was not renamed. Please provide a name.</string>
+    <string name="msgNaoAtualizadoItem">Item was not modified. Please provide a name and quantity.</string>
+    <string name="msgDialogoNomeVazio">Can\'t be blank</string>
+    <string name="msgDialogoQuantidadeVaziaOuZero">Must be 1 or higher</string>
+    <string name="msgNaoSalvoItem">Item was not saved. Please provide a name and quantity.</string>
+    <string name="msgNaoSalvoItemOutros">Item was not saved. Please provide at least one Location and one Category.</string>
 </resources>

@@ -8,7 +8,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.demetriusjr.mystuff.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -35,6 +34,6 @@ class MainActivity:AppCompatActivity() {
         return navController.navigateUp(abc) || super.onSupportNavigateUp()
     }
 
-    fun mostrarSnackbar(view:View, idString:Int) = Snackbar.make(view, idString, Snackbar.LENGTH_SHORT).show()
+    fun mostrarSnackbar(view:View, idString:Int) = Snackbar.make(view, idString, Snackbar.LENGTH_SHORT).setTextMaxLines(2).show()
 
 }

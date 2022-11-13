@@ -13,6 +13,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:hint="@string/dialogoDicaNome"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -32,7 +33,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,6 +47,7 @@
             android:id="@+id/btnDiminuirQuantidade"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:layout_marginBottom="24dp"
             android:contentDescription="@string/dialogoItemDiminuirQuantidade"
             app:layout_constraintBottom_toBottomOf="@+id/txtiQuantidade"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,6 +59,7 @@
             android:id="@+id/btnAumentarQuantidade"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:layout_marginBottom="24dp"
             android:contentDescription="@string/dialogoItemAumentarQuantidade"
             android:tint="@color/preto50"
             app:layout_constraintBottom_toBottomOf="@+id/txtiQuantidade"
@@ -71,6 +74,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:hint="@string/dialogoDicaQuantidade"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toStartOf="@+id/btnAumentarQuantidade"
             app:layout_constraintStart_toEndOf="@+id/btnDiminuirQuantidade"
             app:layout_constraintTop_toTopOf="parent"
@@ -104,11 +108,10 @@
             style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="@string/dialogoItemEscolher"
             android:textColor="@color/secondaryTextColor"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnAumentarQuantidade" />
+            app:layout_constraintTop_toBottomOf="@+id/txtiQuantidade" />
 
         <ImageButton
             android:id="@+id/btnRemoverLocalSelecionado"
